@@ -26,4 +26,4 @@ export const Response = db.define('response',{
 
 
         Response.belongsTo(Pqrc, {foreignKey: 'register_pqr_id', sourceKey: 'id'});
-        Pqrc.hasMany(Register, {foreignKey: 'register_pqr_id', targetId: 'id'}); 
+        Pqrc.hasMany(Response, {foreignKey: 'register_pqr_id', targetId: 'id'}); 

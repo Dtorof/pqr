@@ -36,8 +36,7 @@ export const createRegister = async  (req,res) => {
     
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
     let dateNow = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear()
-
-    let date_register = `${dateNow} ${time}`
+    let  date_register = `${dateNow} ${time}`
 
     const createRegister = await Register.create({
         client_id, user_id, pqr_category_id, date_register, description, status 

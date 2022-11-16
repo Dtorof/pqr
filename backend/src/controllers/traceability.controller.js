@@ -30,7 +30,7 @@ export const createTraceability = async  (req,res) => {
 
     try {
     
-    const { register_pqr_id, update } = req.body
+    const { register_pqr_id, novelty } = req.body
     
     const today = new Date()
     
@@ -39,7 +39,7 @@ export const createTraceability = async  (req,res) => {
     let date = `${dateNow} ${time}`
     
     const createRegister = await Traceability.create({
-        register_pqr_id, date, update
+        register_pqr_id, date, novelty
     })
     res.status(200).json({message: "Register was created succesfully", createRegister})
 
@@ -67,12 +67,12 @@ export const editTraceability = async (req,res) => {
     const { id } = req.params
     try {
 
-        const { register_pqr_id, date, update } = req.body
+        const { register_pqr_id, date, novelty } = req.body
     
         const editRegister = await Traceability.findByPk(id)
         editRegister.register_pqr_id = register_pqr_id
         editRegister.date = date
-        editRegister.update = update
+        editRegister.novelty = novelty
         await editRegister.save()
     
         res.status(200).json({message: `Register with id:${id} was succesfully edited`, editRegister})

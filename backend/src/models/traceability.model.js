@@ -18,7 +18,7 @@ export const Traceability = db.define('traceability',{
             type: STRING,
             allowNull: true
         },
-        update:{
+        novelty:{
             type: STRING,
             allowNull: true
         }
