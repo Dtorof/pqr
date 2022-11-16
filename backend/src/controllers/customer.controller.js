@@ -30,14 +30,14 @@ export const customerById = async (req,res) => {
 
 export const createCustomer = async  (req,res) => {
     try{
-        let { names,surnames,document,fullName, dateOfBirth,age,address,phone} = req.body
+        let { names,surnames,document, dateOfBirth,address,phone,email} = req.body
     
-        fullName = `${names} ${surnames}`
+        const fullName = `${names} ${surnames}`
         const getAge = dateOfBirth => Math.floor((new Date() - new Date(dateOfBirth).getTime()) / 3.15576e+10)
-        age =getAge(dateOfBirth)
+        const age =getAge(dateOfBirth)
         
     const createCustomer= await Customer.create({
-        names,email ,surnames,fullName,dateOfBirth,age, document,address,phone
+        names,surnames,fullName,dateOfBirth,age, document,address,phone,email
     })
     res.status(200).json({message: 'Customer was created succesfully', createCustomer})
     }catch(error){
@@ -63,14 +63,16 @@ export const deleteCustomer = async (req,res) => {
 export const editCustomer = async (req,res) => {
     const { id } = req.params
     try {
-        let { names, surnames,fullName, dateOfBirth,age,address,phone } = req.body
-        fullName = `${names} ${surnames}`
+        let { names,surnames, dateOfBirth,address,phone,email,document} = req.body
+        const fullName = `${names} ${surnames}`
         const getAge = dateOfBirth => Math.floor((new Date() - new Date(dateOfBirth).getTime()) / 3.15576e+10)
-        age =getAge(dateOfBirth)
+        const age =getAge(dateOfBirth)
         const editCustomer = await Customer.findByPk(id)
         editCustomer.names = names
         editCustomer.surnames = surnames
         editCustomer.fullName = fullName 
+        editCustomer.document = document
+        editCustomer.email = email  
         editCustomer.dateOfBirth = dateOfBirth
         editCustomer.age = age
         editCustomer.address = address

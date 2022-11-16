@@ -6,6 +6,7 @@ import {
     editUser,
     deleteUSer
  } from '../controllers/user.controller.js'
+import { validateJWT } from '../middlewares/validate-jwt.js'
 
 export const userRouter = Router()
 
@@ -14,4 +15,4 @@ userRouter.get('/', user)
 userRouter.get('/:id', userById)
 userRouter.post('/', createUser)
 userRouter.put('/:id', editUser)
-userRouter.delete('/:id', deleteUSer)
+userRouter.delete('/:id',validateJWT, deleteUSer)
