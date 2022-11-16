@@ -12,6 +12,10 @@ const { STRING, INTEGER, DATEONLY} = DataTypes
                 type: STRING,
                 allowNull: true
             },
+            email: {
+                type: STRING,
+                allowNull: true
+            },
             surnames: {
                 type: STRING,
                 allowNull: true
