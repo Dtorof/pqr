@@ -21,7 +21,7 @@ const { STRING, INTEGER, DATEONLY} = DataTypes
                 allowNull: true
             },
             dateOfBirth:{
-                type: DATEONLY,
+                type: STRING,
                 allowNull: true
             },
             age:{
