@@ -31,12 +31,12 @@ export const userById = async (req,res) => {
 export const createUser = async  (req,res) => {
     const salt = bcryptjs.genSaltSync();//uses the bcrypt npm package
     try{
-        const { name,user,document, password } = req.body
-    if( !name || !user || !document || !password  ){
+        const { name,userName,document, password } = req.body
+    if( !name || !userName || !document || !password  ){
         return res.status(400).json({error: "Uno o más campos vacios"})
     }
     const createUser= await User.create({
-        name,user,document,password,password: bcryptjs.hashSync( req.body.password.toString(), salt )
+        name,userName,document,password,password: bcryptjs.hashSync( req.body.password.toString(), salt )
     })
     res.status(200).json({message: 'user was created succesfully', createUser})
     }catch(error){
@@ -67,7 +67,7 @@ export const editUser = async (req,res) => {
     
         const editUser = await User.findByPk(id)
         editUser.name = name
-        editUser.user = user
+        editUser.userName = userName
         editUser.document = document
         editUser.password = bcryptjs.hashSync( password.toString(), salt )
         await editUser.save()

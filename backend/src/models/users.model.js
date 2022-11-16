@@ -13,7 +13,7 @@ const { STRING, INTEGER } = DataTypes
                 allowNull: true
             },
           
-            user: {
+            userName: {
                 type: STRING,
                 allowNull: true
             },
