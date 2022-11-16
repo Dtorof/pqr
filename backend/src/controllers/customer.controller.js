@@ -65,6 +65,8 @@ export const editCustomer = async (req,res) => {
     try {
         let { names,surnames,fullName, dateOfBirth,age,address,phone } = req.body
         fullName = `${names} ${surnames}`
+        const getAge = dateOfBirth => Math.floor((new Date() - new Date(dateOfBirth).getTime()) / 3.15576e+10)
+        age =getAge(dateOfBirth)
         const editCustomer = await Customer.findByPk(id)
         editCustomer.names = names
         editCustomer.surnames = surnames
