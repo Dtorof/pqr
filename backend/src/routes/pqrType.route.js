@@ -10,8 +10,8 @@ import {
 export const pqrtRouter = Router()
 
 
-pqrtRouter.get('/api/v1/pqrt', pqrt)
-pqrtRouter.get('/api/v1/pqrt/:id', pqrtById)
-pqrtRouter.post('/api/v1/pqrt', createPqrt)
-pqrtRouter.put('/api/v1/pqrt/:id', editPqrt)
-pqrtRouter.delete('/api/v1/pqrt/:id', deletePqrt)
+pqrtRouter.get('/', pqrt)
+pqrtRouter.get('/:id', pqrtById)
+pqrtRouter.post('/', createPqrt)
+pqrtRouter.put('/:id', editPqrt)
+pqrtRouter.delete('/:id', deletePqrt)

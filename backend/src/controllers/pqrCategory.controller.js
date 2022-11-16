@@ -1,10 +1,10 @@
-import { Pqrt} from '../models/pqrType.model.js'
+import { Pqrc} from '../models/pqrCategory.model.js'
+import { Pqrt } from '../models/pqrType.model.js'
 
 
-
-export const pqrt = async (req,res) => {
+export const pqrc = async (req,res) => {
     try{
-        const list = await Pqrt.findAll()
+        const list = await Pqrc.findAll({include:[{model:Pqrt}]})
         res.json(list)
     }catch(err){
         console.log(err);
@@ -12,15 +12,15 @@ export const pqrt = async (req,res) => {
    
 }
 
-export const pqrtById = async (req,res) => {
+export const pqrcById = async (req,res) => {
     const { id } = req.params
     try{
-        const pqrtId = await Pqrt.findOne({
+        const pqrcId = await Pqrc.findOne({
             where: {
               id,
             },
           });
-          res.json(pqrtId);
+          res.json(pqrcId);
     }catch(err){
         res.status(500).json({
             message: err,
@@ -28,15 +28,15 @@ export const pqrtById = async (req,res) => {
     }
 }
 
-export const createPqrt = async  (req,res) => {
+export const createPqrc = async  (req,res) => {
     try{
-        const {name} = req.body
-        console.log(name)
-    if( !name ){
+        const {name,type_pqr_id} = req.body
+     
+    if( !name || !type_pqr_id ){
         return res.status(400).json({error: "Uno o más campos vacios"})
     }
-    const createRegister = await Pqrt.create({
-        name
+    const createRegister = await Pqrc.create({
+        name,type_pqr_id
     })
     res.status(200).json({message: 'Positions was created succesfully', createRegister})
     }catch(error){
@@ -45,10 +45,10 @@ export const createPqrt = async  (req,res) => {
     
 }
 
-export const deletePqrt = async (req,res) => {
+export const deletePqrc = async (req,res) => {
     const { id } = req.params
     try{
-         await Pqrt.destroy({
+         await Pqrc.destroy({
             where: {
                 id
             }
@@ -59,16 +59,16 @@ export const deletePqrt = async (req,res) => {
        }
 }
 
-export const editPqrt= async (req,res) => {
+export const editPqrc= async (req,res) => {
     const { id } = req.params
     try {
         const { name } = req.body
     
-        const editPqrt = await Pqrt.findByPk(id)
-        editPqrt.name = name
-        await editPqrt.save()
+        const editPqrc = await Pqrc.findByPk(id)
+        editPqrc.name = name
+        await editPqrc.save()
     
-        res.status(200).json({message: `Register with id:${id} was succesfully edited`, editPqrt})
+        res.status(200).json({message: `Register with id:${id} was succesfully edited`, editPqrc})
       } catch (err) {
         return res.status(500).json({ message: err})
       }
