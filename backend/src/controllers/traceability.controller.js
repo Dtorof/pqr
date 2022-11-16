@@ -3,7 +3,7 @@ import  { Traceability } from '../models/traceability.model.js'
 
 export const getTraceability = async (req,res) => {
     try{
-        const list = await Traceability.findAll({all:true})
+        const list = await Traceability.findAll({ include: { all: true }})
         res.json(list)
     }catch(err){
         console.log(err);
@@ -30,10 +30,16 @@ export const createTraceability = async  (req,res) => {
 
     try {
     
-    const { register_pqr_id, date, update } = req.body
+    const { register_pqr_id, novelty } = req.body
+    
+    const today = new Date()
+    
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+    let dateNow = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear()
+    let date = `${dateNow} ${time}`
     
     const createRegister = await Traceability.create({
-        register_pqr_id, date, update
+        register_pqr_id, date, novelty
     })
     res.status(200).json({message: "Register was created succesfully", createRegister})
 
@@ -61,12 +67,12 @@ export const editTraceability = async (req,res) => {
     const { id } = req.params
     try {
 
-        const { register_pqr_id, date, update } = req.body
+        const { register_pqr_id, date, novelty } = req.body
     
         const editRegister = await Traceability.findByPk(id)
         editRegister.register_pqr_id = register_pqr_id
         editRegister.date = date
-        editRegister.update = update
+        editRegister.novelty = novelty
         await editRegister.save()
     
         res.status(200).json({message: `Register with id:${id} was succesfully edited`, editRegister})

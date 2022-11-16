@@ -1,6 +1,6 @@
 import {  DataTypes } from "sequelize";
 import { db } from "../db/db.js";
-// import { ProductCategory } from './product_category.model.js'
+import { Pqrc } from './pqrCategory.model.js'
 
 const { STRING, INTEGER } = DataTypes
 
@@ -25,4 +25,5 @@ export const Response = db.define('response',{
         })
 
 
-        
+        Response.belongsTo(Pqrc, {foreignKey: 'register_pqr_id', sourceKey: 'id'});
+        Pqrc.hasMany(Response, {foreignKey: 'register_pqr_id', targetId: 'id'}); 
