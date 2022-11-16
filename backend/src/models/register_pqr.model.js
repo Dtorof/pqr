@@ -1,6 +1,6 @@
 import {  DataTypes } from "sequelize";
 import { db } from "../db/db.js";
-// import { ProductCategory } from './product_category.model.js'
+import { Pqrc } from './pqrCategory.model.js'
 
 const { STRING, INTEGER } = DataTypes
 
@@ -38,6 +38,6 @@ export const Register = db.define('register',{
         })
 
 
-        // Register.belongsTo(PqrCategory, {foreignKey: 'pqr_category_id', sourceKey: 'id'});
-        // PqrCategory.hasMany(Register, {foreignKey: 'pqr_category_id', targetId: 'id'});
+     Register.belongsTo(Pqrc, {foreignKey: 'pqr_category_id', sourceKey: 'id'});
+     Pqrc.hasMany(Register, {foreignKey: 'pqr_category_id', targetId: 'id'})
         

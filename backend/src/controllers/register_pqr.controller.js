@@ -3,7 +3,7 @@ import  { Register } from '../models/register_pqr.model.js'
 
 export const getRegisters = async (req,res) => {
     try{
-        const registerList = await Register.findAll({all:true})
+        const registerList = await Register.findAll({ include: { all: true }})
         res.json(registerList)
     }catch(err){
         console.log(err);
@@ -30,7 +30,14 @@ export const createRegister = async  (req,res) => {
 
     try {
     
-    const { client_id, user_id, pqr_category_id, date_register, description, status } = req.body
+    const { client_id, user_id, pqr_category_id, description, status } = req.body
+
+    const today = new Date()
+    
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+    let dateNow = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear()
+
+    let date_register = `${dateNow} ${time}`
 
     const createRegister = await Register.create({
         client_id, user_id, pqr_category_id, date_register, description, status 

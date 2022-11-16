@@ -1,6 +1,6 @@
 import {  DataTypes } from "sequelize";
 import { db } from "../db/db.js";
-// import { ProductCategory } from './product_category.model.js'
+import { Register } from './register_pqr.model.js'
 
 const { STRING, INTEGER } = DataTypes
 
@@ -25,5 +25,6 @@ export const Traceability = db.define('traceability',{
         })
 
 
-        
+        Traceability.belongsTo(Register, {foreignKey: 'register_pqr_id', sourceKey: 'id'});
+        Register.hasMany(Traceability, {foreignKey: 'register_pqr_id', targetId: 'id'})
         

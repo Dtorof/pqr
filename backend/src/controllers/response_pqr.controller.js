@@ -3,7 +3,7 @@ import  { Response } from '../models/response_pqr.model.js'
 
 export const getResponses = async (req,res) => {
     try{
-        const list = await Response.findAll({all:true})
+        const list = await Response.findAll({ include: { all: true }})
         res.json(list)
     }catch(err){
         console.log(err);
