@@ -30,7 +30,7 @@ export const customerById = async (req,res) => {
 
 export const createCustomer = async  (req,res) => {
     try{
-        let { names,email ,surnames,document,fullName, dateOfBirth,age,address,phone} = req.body
+        let { names,email,surnames,document,fullName, dateOfBirth,age,address,phone} = req.body
     
         fullName = `${names} ${surnames}`
         const getAge = dateOfBirth => Math.floor((new Date() - new Date(dateOfBirth).getTime()) / 3.15576e+10)
@@ -69,7 +69,7 @@ export const editCustomer = async (req,res) => {
         age =getAge(dateOfBirth)
         const editCustomer = await Customer.findByPk(id)
         editCustomer.names = names
-        editCustomer.email = email 
+        editCustomer.email =  email
         editCustomer.surnames = surnames
         editCustomer.fullName = fullName 
         editCustomer.dateOfBirth = dateOfBirth
