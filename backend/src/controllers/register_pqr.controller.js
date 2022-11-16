@@ -61,11 +61,10 @@ export const editRegister = async (req,res) => {
     const { id } = req.params
     try {
 
-        const { client_id, user_id, pqr_category_id, date_register, description, status } = req.body
+        const { client_id, pqr_category_id, date_register, description, status } = req.body
     
         const editRegister = await Register.findByPk(id)
         editRegister.client_id = client_id
-        editRegister.user_id = user_id
         editRegister.pqr_category_id = pqr_category_id
         editRegister.date_register = date_register
         editRegister.description = description

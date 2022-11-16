@@ -31,6 +31,7 @@ export const createResponse = async  (req,res) => {
     try {
     
     const { register_pqr_id, user_id, desc_solution } = req.body
+   
 
     const createRegister = await Response.create({
         register_pqr_id, user_id, desc_solution
