@@ -22,7 +22,7 @@ export const editRegister = async (req,res) => {
 
         const info = await transporter.sendMail({
           from: '"Market Mix Team. PQR has been updated. Please, verify your process." <jorgetarifa33@gmail.com>', 
-          to: 'envioshseq@gmail.com',
+          to: 'oscar.sierra@misena.edu.co',
           subject: "PQR has been updated ✔", 
           text: "", 
           html: `
