@@ -33,7 +33,7 @@ export const createRegister = async  (req,res) => {
 
     try {
     
-    const { client_id, user_id, pqr_category_id, description, status } = req.body
+    const { client_id, user_id, pqr_category_id, description} = req.body
     
     const uuid = v4()
     const today = new Date()
@@ -43,7 +43,7 @@ export const createRegister = async  (req,res) => {
     let  date_register = `${dateNow} ${time}`
 
     const createRegister = await Register.create({ id: uuid,
-        client_id, user_id, pqr_category_id, date_register, description, status 
+        client_id, user_id, pqr_category_id, date_register, description, status: "En proceso" 
     })
 
     const noveltyTraceability = await Traceability.create({
@@ -96,7 +96,6 @@ export const editRegister = async (req,res) => {
         editRegister.pqr_category_id = pqr_category_id
         editRegister.date_register = date_register
         editRegister.description = description
-        editRegister.status = status
         await editRegister.save()
     
         res.status(200).json({message: `Register with id:${id} was succesfully edited`, editRegister})
