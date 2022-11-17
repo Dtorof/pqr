@@ -13,14 +13,4 @@ export const transporter = nodemailer.createTransport({
 
   transporter.verify().then((t) => t => console.log('Ready for emailer'))
 
-  let info = await transporter.sendMail({
-    from: '"PQR has been updated. Please, verify your process." <jorgetarifa33@gmail.com>', 
-    to: user.username,
-    subject: "PQR has been updated ✔", 
-    text: "", 
-    html: `
-    <b> Status in your current process has been updated, please verify the changes. @Market Mix Team.</b>
-    <a href="${verificationLink}" > ${verificationLink}  </a>
-    `
-
-  });
+ 

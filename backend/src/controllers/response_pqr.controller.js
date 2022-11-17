@@ -1,6 +1,6 @@
 import  { Response } from '../models/response_pqr.model.js'
 import { Traceability } from '../models/traceability.model.js'
-
+import { transporter } from '../helpers/configGmail.js'
 
 export const getResponses = async (req,res) => {
     try{
@@ -46,6 +46,16 @@ export const createResponse = async  (req,res) => {
     const noveltyTraceability = await Traceability.create({
         register_pqr_id, date: date_register, novelty: 'Contestado'
     })
+
+    const info = await transporter.sendMail({
+        from: '"Market Mix Team. PQR has been updated. Please, verify your process." <jorgetarifa33@gmail.com>', 
+        to: 'envioshseq@gmail.com',
+        subject: "PQR has been updated ✔", 
+        text: "", 
+        html: `
+        <b> Status in your current process has been updated, please verify the changes. </b>
+        `
+      });
 
     console.log(noveltyTraceability);
 
