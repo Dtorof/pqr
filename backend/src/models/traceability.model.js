@@ -11,7 +11,7 @@ export const Traceability = db.define('traceability',{
             autoIncrement: true,
         },
         register_pqr_id:{
-            type: INTEGER,
+            type: STRING,
             allowNull: true
         },  
         date: {

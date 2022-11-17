@@ -1,6 +1,7 @@
 import {  DataTypes } from "sequelize";
 import { db } from "../db/db.js";
 import { Pqrc } from './pqrCategory.model.js'
+import Customer from "./customers.model.js"; 
 
 const { STRING, INTEGER } = DataTypes
 
@@ -8,7 +9,7 @@ export const Response = db.define('response',{
         id: {
             type: INTEGER,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
         },
         register_pqr_id:{
             type: INTEGER,
@@ -27,3 +28,6 @@ export const Response = db.define('response',{
 
         Response.belongsTo(Pqrc, {foreignKey: 'register_pqr_id', sourceKey: 'id'});
         Pqrc.hasMany(Response, {foreignKey: 'register_pqr_id', targetId: 'id'}); 
+        
+        Response.belongsTo(Customer, {foreignKey: 'user_id', sourceKey: 'id'});
+        Customer.hasMany(Response, {foreignKey: 'user_id', targetId: 'id'});

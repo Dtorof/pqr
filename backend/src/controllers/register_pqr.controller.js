@@ -1,5 +1,6 @@
 import  { Register } from '../models/register_pqr.model.js'
-
+import { Traceability } from '../models/traceability.model.js'
+import { v4 } from 'uuid'
 
 export const getRegisters = async (req,res) => {
     try{
@@ -18,6 +19,7 @@ export const registerById = async (req,res) => {
               id,
             },
           });
+        
           res.json(registerId);
     }catch(err){
         res.status(500).json({
@@ -31,16 +33,24 @@ export const createRegister = async  (req,res) => {
     try {
     
     const { client_id, user_id, pqr_category_id, description, status } = req.body
-
+    
+    const uuid = v4()
     const today = new Date()
     
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
     let dateNow = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear()
     let  date_register = `${dateNow} ${time}`
 
-    const createRegister = await Register.create({
+    const createRegister = await Register.create({ id: 'er hyesu',
         client_id, user_id, pqr_category_id, date_register, description, status 
     })
+
+    const noveltyTraceability = await Traceability.create({
+        register_pqr_id: id, date: date_register, novelty: 'En proceso'
+    })
+
+    console.log(noveltyTraceability);
+
     res.status(200).json({message: "Register was created succesfully", createRegister})
 
     } catch (error) {

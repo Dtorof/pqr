@@ -1,4 +1,5 @@
 import  { Response } from '../models/response_pqr.model.js'
+import { Traceability } from '../models/traceability.model.js'
 
 
 export const getResponses = async (req,res) => {
@@ -32,10 +33,22 @@ export const createResponse = async  (req,res) => {
     
     const { register_pqr_id, user_id, desc_solution } = req.body
    
+    const today = new Date()
+    
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+    let dateNow = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear()
+    let  date_register = `${dateNow} ${time}`
 
     const createRegister = await Response.create({
-        register_pqr_id, user_id, desc_solution
+       register_pqr_id, user_id, desc_solution
     })
+
+    const noveltyTraceability = await Traceability.create({
+        register_pqr_id, date: date_register, novelty: 'Contestado'
+    })
+
+    console.log(noveltyTraceability);
+
     res.status(200).json({message: "Register was created succesfully", createRegister})
 
     } catch (error) {

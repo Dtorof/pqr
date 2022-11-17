@@ -11,7 +11,7 @@ export const transporter = nodemailer.createTransport({
     },
   });
 
-  transporter.verify().then(() => t => console.log('Ready for emailer'))
+  transporter.verify().then((t) => t => console.log('Ready for emailer'))
 
   let info = await transporter.sendMail({
     from: '"PQR has been updated. Please, verify your process." <jorgetarifa33@gmail.com>', 
