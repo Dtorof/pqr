@@ -53,7 +53,7 @@ export const createRegister = async  (req,res) => {
     const info = await transporter.sendMail({
         from: '"Market Mix Team. PQR has been updated. Please, verify your process." <jorgetarifa33@gmail.com>', 
         to: 'envioshseq@gmail.com',
-        subject: "PQR has been updated ✔", 
+        subject: "PQR has been updated ✔.", 
         text: "", 
         html: `
         <b> Status in your current process has been updated, please verify the changes. </b>
