@@ -36,7 +36,7 @@ export const createResponse = async  (req,res) => {
     const today = new Date()
     
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
-    let dateNow = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear()
+    let dateNow = today.getFullYear() + '-' + (today.getMonth()+1) + '-' +  today.getDate() 
     let  date_register = `${dateNow} ${time}`
 
     const createRegister = await Response.create({

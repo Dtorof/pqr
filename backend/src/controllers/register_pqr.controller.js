@@ -38,15 +38,15 @@ export const createRegister = async  (req,res) => {
     const today = new Date()
     
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
-    let dateNow = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear()
+    let dateNow = today.getFullYear() + '-' + (today.getMonth()+1) + '-' +  today.getDate() 
     let  date_register = `${dateNow} ${time}`
 
-    const createRegister = await Register.create({ id: 'er hyesu',
+    const createRegister = await Register.create({ id: uuid,
         client_id, user_id, pqr_category_id, date_register, description, status 
     })
 
     const noveltyTraceability = await Traceability.create({
-        register_pqr_id: id, date: date_register, novelty: 'En proceso'
+        register_pqr_id: uuid, date: date_register, novelty: 'En proceso'
     })
 
     console.log(noveltyTraceability);

@@ -1,7 +1,6 @@
 import { Customer} from '../models/customers.model.js'
 import bcryptjs from 'bcrypt'
 
-
 export const customer = async (req,res) => {
     try{
         const list = await Customer.findAll()
