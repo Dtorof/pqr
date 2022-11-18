@@ -63,7 +63,7 @@ export const editUser = async (req,res) => {
     const salt = bcryptjs.genSaltSync();
     const { id } = req.params
     try {
-        const { name,user,document,password } = req.body
+        const { name,userName,document,password } = req.body
     
         const editUser = await User.findByPk(id)
         editUser.name = name
