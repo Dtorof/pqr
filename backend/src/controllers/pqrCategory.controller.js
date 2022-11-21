@@ -17,7 +17,7 @@ export const pqrcById = async (req,res) => {
     try{
         const pqrcId = await Pqrc.findOne({
             where: {
-              id,
+              type_pqr_id,
             },
           });
           res.json(pqrcId);
