@@ -24,7 +24,7 @@ export const registerById = async (req,res) => {
           if (registerId) {
             res.json(registerId);
           } else {
-            res.status(404).json({message: "El usuario no existe"});
+            res.status(404).json({message: "El registro no existe"});
           }
         
           
