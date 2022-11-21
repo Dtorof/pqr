@@ -51,12 +51,12 @@ export const createRegister = async  (req,res) => {
     })
 
     const info = await transporter.sendMail({
-        from: '"Market Mix Team. PQR has been updated. Please, verify your process." <jorgetarifa33@gmail.com>', 
+        from: '"Market Mix Team. El estado de la PQR ha cambiado a: En proceso.  Por favor verifica las novedades." <jorgetarifa33@gmail.com>', 
         to: 'oscar.sierra@misena.edu.co',
-        subject: "PQR has been updated ✔.", 
+        subject: "PQR ha sido actualizada ✔", 
         text: "", 
         html: `
-        <b> Status in your current process has been updated, please verify the changes. </b>
+        <b> El estado de tu actual proceso ha cambiado. Por favor, verifica las actualizaciones. </b>
         `
       });
 
