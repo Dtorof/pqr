@@ -15,7 +15,7 @@ export const pqrc = async (req,res) => {
 export const pqrcById = async (req,res) => {
     const { id } = req.params
     try{
-        const pqrcId = await Pqrc.findAll({
+        const pqrcId = await Pqrc.findAll({include:[{model:Pqrt}]},{
             where: {
               type_pqr_id,
             },
