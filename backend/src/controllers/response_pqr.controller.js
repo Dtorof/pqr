@@ -54,12 +54,12 @@ export const createResponse = async  (req,res) => {
     })
 
     const info = await transporter.sendMail({
-        from: '"Market Mix Team. PQR ha sido actualizado a: Contestado. Por favor verifica el nuevo estado del proceso." <jorgetarifa33@gmail.com>', 
+        from: '"Market Mix Team." <jorgetarifa33@gmail.com>', 
         to: 'oscar.sierra@misena.edu.co',
         subject: "PQR ha sido actualizada ✔", 
         text: "", 
         html: `
-        <b> El estado de tu actual proceso ha cambiado. Por favor, verifica las actualizaciones. </b>
+        <b> PQR ha sido actualizado a: Contestado. Por favor verifica el nuevo estado del proceso.</b>
         `
       });
 
