@@ -29,7 +29,6 @@ export const editRegister = async (req,res) => {
           <b> El estado de tu actual proceso ha cambiado. Por favor, verifica las actualizaciones. </b>
           `
         });
-        console.log(noveltyTraceability);
 
         const editRegister = await Register.findByPk(id)
         editRegister.status = status

@@ -19,7 +19,13 @@ export const responseById = async (req,res) => {
               id,
             },
           });
-          res.json(itemId);
+          
+        if (itemId) {
+            res.json(itemId);
+        } else {
+            res.status(404).json({message: "El registro no existe"});
+        }
+        
     }catch(err){
         res.status(500).json({
             message: err,

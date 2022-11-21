@@ -20,8 +20,14 @@ export const registerById = async (req,res) => {
               id,
             },
           });
+
+          if (registerId) {
+            res.json(registerId);
+          } else {
+            res.status(404).json({message: "El usuario no existe"});
+          }
         
-          res.json(registerId);
+          
     }catch(err){
         res.status(500).json({
             message: err,
@@ -60,8 +66,6 @@ export const createRegister = async  (req,res) => {
         `
       });
 
-
-    console.log(noveltyTraceability);
 
     res.status(200).json({message: "Register was created succesfully", createRegister})
 
