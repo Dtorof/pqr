@@ -1,5 +1,8 @@
+<script setup>
+import UserVue from '../components/users/User.vue';
+</script>
+
+
 <template>
-    <div>
-      user
-    </div>
+  <UserVue/>
 </template>

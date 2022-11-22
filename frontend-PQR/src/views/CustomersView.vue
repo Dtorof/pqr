@@ -1,5 +1,7 @@
+<script setup>
+import CustomerVue from '../components/customers/Customer.vue';
+</script>
+
 <template>
-    <div>
-      Customers
-    </div>
+    <CustomerVue/>
 </template>
