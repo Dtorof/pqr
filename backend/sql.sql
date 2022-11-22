@@ -41,10 +41,10 @@ http://localhost:7500/api/v1/register-pqr
 -- PQR Register
 
 {
-    "client_id" : "1",
-    "user_id" : "1",
-    "pqr_category_id" : "1",
-    "description" : "Some description"
+    "client_id" : 2,
+    "user_id" : 1,
+    "pqr_category_id" : 1,
+    "description" : "Over permission"
 }
 
 http://localhost:7500/api/v1/response-pqr

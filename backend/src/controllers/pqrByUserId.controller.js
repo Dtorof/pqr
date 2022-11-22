@@ -1,11 +1,9 @@
 import  { Register } from '../models/register_pqr.model.js'
 
-
-
 export const responseById = async (req,res) => {
     const { id } = req.params
     try{
-        const itemId = await Register.findOne({
+        const itemId = await Register.findAll({
             where: {
                 client_id: id
             },
@@ -14,7 +12,7 @@ export const responseById = async (req,res) => {
         if (itemId) {
             res.status(200).json(itemId);
         } else {
-            res.status(404).json({message: "El registro no existe"});
+            res.status(404).json({message: "El usuario no existe"});
         }
         
     }catch(err){
