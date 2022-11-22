@@ -11,7 +11,7 @@ export const pqrcRouter = Router()
 
 
 pqrcRouter.get('/', pqrc)
-pqrcRouter.get('/:id', pqrcById)
+pqrcRouter.get('/:type_pqr_id', pqrcById)
 pqrcRouter.post('/', createPqrc)
 pqrcRouter.put('/:id', editPqrc)
 pqrcRouter.delete('/:id', deletePqrc)
