@@ -13,11 +13,11 @@ export const pqrc = async (req,res) => {
 }
 
 export const pqrcById = async (req,res) => {
-    const { id } = req.params
+    const { type_pqr_id } = req.params
     try{
-        const pqrcId = await Pqrc.findOne({
+        const pqrcId = await Pqrc.findAll({
             where: {
-              id,
+              type_pqr_id,
             },
           });
           res.json(pqrcId);
