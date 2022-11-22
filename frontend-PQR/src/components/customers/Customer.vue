@@ -155,7 +155,6 @@ onMounted(() => {
           type="text"
           class="form-control"
           id="floatingInput"
-          placeholder="names@example.com"
           :class="{ 'is-invalid': $v.names.$error }"
         />
         <label class="label1" for="floatingInput">Nombre</label>
@@ -174,7 +173,6 @@ onMounted(() => {
           type="text"
           class="form-control"
           id="floatingPassword"
-          placeholder="Password"
           :class="{ 'is-invalid': $v.surnames.$error }"
         />
         <label class="label1" for="floatingPassword">Apellido</label>
@@ -192,7 +190,6 @@ onMounted(() => {
           type="email"
           class="form-control"
           id="floatingPassword"
-          placeholder="Password"
           :class="{ 'is-invalid': $v.email.$error }"
 
         />
@@ -211,7 +208,6 @@ onMounted(() => {
           type="date"
           class="form-control"
           id="floatingPassword"
-          placeholder="Password"
           :class="{ 'is-invalid': $v.dateOfBirth.$error }"
 
         />
@@ -230,7 +226,6 @@ onMounted(() => {
           type="text"
           class="form-control"
           id="floatingPassword"
-          placeholder="Password"
           :class="{ 'is-invalid': $v.address.$error }"
 
         />
@@ -249,7 +244,6 @@ onMounted(() => {
           type="number"
           class="form-control"
           id="floatingPassword"
-          placeholder="Password"
           :class="{ 'is-invalid': $v.phone.$error }"
 
         />
