@@ -78,12 +78,21 @@ export const createRegister = async  (req,res) => {
 export const deleteRegister = async (req,res) => {
     const { id } = req.params
     try{
-         await Register.destroy({
-            where: {
-                id
-            }
-        })
-         res.status(200).json({message: `Register with id:${id} was succesfully removed`})
+      const deleteOne = await Register.findOne({
+        where: {
+          id,
+        },
+      });
+    if (deleteOne) {
+      await Register.destroy({
+        where: {
+            id
+        }
+    })
+        res.status(200).json({message: `Register with id:${id} was succesfully removed`})
+    } else {
+        res.status(404).json({error: "No existe un registro con este ID"})
+    }
        }catch(err){
             console.error(err)
        }
