@@ -44,7 +44,7 @@ const sendValidations = async () => {
   }
 };
 
-
+const todo = ref([])
 
 const sendData = async () => {
   
@@ -55,12 +55,17 @@ const sendData = async () => {
   formData.append("password", state.password);
 
   const urlDB = `https://pqr-production.up.railway.app/api/v1/user`;
+  
   await fetch(urlDB, {
     method: "POST",
     body: formData,
   })
+  
     .then((response) => response)
-    .then((response) => { })
+    .then((response) => { 
+      
+
+    })
     .catch((error) => {
       console.error("Error:", error);
     });

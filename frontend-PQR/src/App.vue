@@ -4,10 +4,12 @@ import UserVue from './components/users/User.vue';
 import CustomerVue from './components/customers/Customer.vue';
 import ResponsePQRViewVue from './views/ResponsePQRView.vue';
 import AdministracionView from "./views/AdministrationView.vue"
+import TraceabilyViewVue from './views/TraceabilyView.vue';
 </script>
 
 <template>
-  <!-- <UserVue/> -->
+  <!-- <TraceabilyViewVue/> -->
+  <UserVue/>
   <!-- <CustomerVue/> -->
   <!-- <ResponsePQRViewVue/> -->
  <!-- <AdministracionView/>  -->
@@ -20,7 +22,8 @@ import AdministracionView from "./views/AdministrationView.vue"
     </div>
   </header> -->
 
-  <RouterView />
+  <!-- <RouterView /> -->
+  <!-- <ResponsePQRViewVue/> -->
 </template>
 
 <style scoped>

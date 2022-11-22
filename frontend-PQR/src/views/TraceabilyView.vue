@@ -1,5 +1,7 @@
+<script setup>
+import TraceabilityVue from '../components/traceability/Traceability.vue';
+</script>
+
 <template>
-    <div>
-      Traceabily
-    </div>
+    <TraceabilityVue/>
 </template>

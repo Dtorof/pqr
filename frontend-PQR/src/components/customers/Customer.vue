@@ -7,6 +7,7 @@ import { required,email} from "@vuelidate/validators";
 const state = reactive({
   names: "",
   surnames: "",
+  documento:"",
   email: "",
   dateOfBirth: "",
   address: "",
@@ -34,6 +35,10 @@ const rules = computed(() => {
       required,
     },
     phone: {
+      required,
+    },
+   
+    documento: {
       required,
     },
   };
@@ -66,17 +71,15 @@ const sendData = async () => {
   formData.append("dateOfBirth", state.dateOfBirth);
   formData.append("address", state.address);
   formData.append("phone", state.phone);
+  formData.append("phone", state.documento);
 
   const urlDB = `https://pqr-production.up.railway.app/api/v1/customer`;
   await fetch(urlDB, {
-    
     method: "POST",
     body: formData,
   })
     .then((response) => response)
-    .then((response) => {
-      dataCustomer()
-    })
+    
     .catch((error) => {
       console.error("Error:", error);
     });
@@ -124,6 +127,7 @@ const clear = () => {
   state.dateOfBirth= "";
   state.address= "";
   state.phone= "";
+  state.documento="";
 };
 
 onMounted(() => {
@@ -205,7 +209,7 @@ onMounted(() => {
       <div class="form-floating mb-3">
         <input
         v-model="state.dateOfBirth"
-          type="date"
+          type="text"
           class="form-control"
           id="floatingPassword"
           :class="{ 'is-invalid': $v.dateOfBirth.$error }"
@@ -218,6 +222,24 @@ onMounted(() => {
               class="text-danger"
             >
               {{ (error.$message = "Por favor ingrese una fecha de nacimiento") }}
+            </span>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+        v-model="state.documento"
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          :class="{ 'is-invalid': $v.documento.$error }"
+
+        />
+        <label class="label1" for="floatingPassword">Numero de documento</label>
+        <span
+              v-for="error in $v.documento.$errors"
+              :key="error.$uid"
+              class="text-danger"
+            >
+              {{ (error.$message = "Por favor ingrese un documento") }}
             </span>
       </div>
       <div class="form-floating mb-3">
