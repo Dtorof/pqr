@@ -5,7 +5,7 @@ import { transporter } from '../helpers/configGmail.js'
 export const getResponses = async (req,res) => {
     try{
         const list = await Response.findAll({ include: { all: true }})
-        res.json(list)
+        res.status(200).json(list)
     }catch(err){
         console.log(err);
     }
@@ -21,7 +21,7 @@ export const responseById = async (req,res) => {
           });
           
         if (itemId) {
-            res.json(itemId);
+            res.status(200).json(itemId);
         } else {
             res.status(404).json({message: "El registro no existe"});
         }
@@ -76,12 +76,14 @@ export const createResponse = async  (req,res) => {
 export const deleteResponse = async (req,res) => {
     const { id } = req.params
     try{
-         await Response.destroy({
+        const deleteOne = await Response.destroy({
             where: {
                 id
             }
         })
+     
          res.status(200).json({message: `Register with id:${id} was succesfully removed`})
+       
        }catch(err){
             console.error(err)
        }
