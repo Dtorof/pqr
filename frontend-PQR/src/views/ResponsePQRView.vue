@@ -1,5 +1,8 @@
+<script setup>
+import ResponseVue from '../components/response_pqr/Response.vue';
+</script>
+
 <template>
-    <div>
-      Response 
-    </div>
+    <ResponseVue/>
+
 </template>

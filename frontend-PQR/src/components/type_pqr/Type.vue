@@ -1,5 +1,3 @@
 <template>
-    <div>
-      Type
-    </div>
+  <h1>tipo</h1>
 </template>
