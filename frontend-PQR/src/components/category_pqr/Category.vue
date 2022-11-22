@@ -1,6 +1,5 @@
 <template>
-    <div>
-      Categoria
-    </div>
+    <h1>
+        category
+    </h1>
 </template>
-

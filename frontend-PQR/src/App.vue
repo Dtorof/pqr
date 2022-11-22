@@ -1,17 +1,21 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-
+import UserVue from './components/users/User.vue';
+import CustomerVue from './components/customers/Customer.vue';
 </script>
 
 <template>
-  <header>
+  <!-- <UserVue/> -->
+  <CustomerVue/>
+  
+  <!-- <header>
     <div class="wrapper">
-      <nav>
+      <nav> -->
         <!-- <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink> -->
-      </nav>
+      <!-- </nav>
     </div>
-  </header>
+  </header> -->
 
   <RouterView />
 </template>
