@@ -81,12 +81,9 @@ export const deleteResponse = async (req,res) => {
                 id
             }
         })
-        if (deleteOne) {
-            res.status(200).json({message: `Register with id:${id} was succesfully removed`})
-        } else {
-            res.status(404).json({error: "No existe un registro con este ID"})
-        }
+     
          res.status(200).json({message: `Register with id:${id} was succesfully removed`})
+       
        }catch(err){
             console.error(err)
        }

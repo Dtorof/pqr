@@ -83,16 +83,9 @@ export const deleteRegister = async (req,res) => {
           id,
         },
       });
-    if (deleteOne) {
-      await Register.destroy({
-        where: {
-            id
-        }
-    })
+  
         res.status(200).json({message: `Register with id:${id} was succesfully removed`})
-    } else {
-        res.status(404).json({error: "No existe un registro con este ID"})
-    }
+    
        }catch(err){
             console.error(err)
        }

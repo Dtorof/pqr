@@ -13,14 +13,14 @@ export const getTraceability = async (req,res) => {
 export const traceabilityById = async (req,res) => {
     const { id } = req.params
     try{
-        const itemId = await Traceability.findOne({
+        const itemId = await Traceability.findAll({
             where: {
-              id,
+              register_pqr_id:id,
             },
           });
 
           if (itemId) {
-            res.json(itemId);
+            res.status(200).json(itemId);
           } else {
             res.status(404).json({message: "El registro no existe"});
           }
