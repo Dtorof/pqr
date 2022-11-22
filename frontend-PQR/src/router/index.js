@@ -13,7 +13,34 @@ const router = createRouter({
     {
       path: '/administration',
       name: 'administration',
-      component: () => import('../views/AdministrationView.vue')
+      component: () => import('../views/AdministrationView.vue'),
+      children:[
+        // {
+        //   path: "/CrearPQR",
+        //   name: "CrearPQR",
+        //   component: () =>
+        //     // import("../module_administration/components/Create_Employees.vue"),
+        // },
+        {
+          path: "/createCategory",
+          name: "createCategory",
+          component: () =>
+            import("../views/CategoryView.vue"),
+        },
+        {
+          path: "/createResponsePQR",
+          name: "createResponsePQR",
+          component: () =>
+            import("../views/ResponsePQRView.vue"),
+        },
+        {
+          path: "/createTraceabily",
+          name: "createTraceabily",
+          component: () =>
+            import("../views/TraceabilyView.vue"),
+        }
+
+      ]
     }
   ]
 })

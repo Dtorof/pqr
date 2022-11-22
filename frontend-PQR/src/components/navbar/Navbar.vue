@@ -1,5 +1,5 @@
 <template>
- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+ <nav class="navbar navbar-expand-sm">
    <div class="container-fluid">
     <a class="navbar-brand logo" href="javascript:void(0)">PQR Manager</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -8,16 +8,16 @@
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Crear PQR</a>
+          <RouterLink to="/" class="nav-link text-white" href="#">Crear PQR</RouterLink>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Crear Categoria</a>
+          <RouterLink to="/createCategory" class="nav-link text-white" href="#">Crear Categoria</RouterLink>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Responder PQR</a>
+          <RouterLink to="/createResponsePQR" class="nav-link text-white" href="#">Responder PQR</RouterLink>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Trazabilidad</a>
+          <RouterLink to="/createTraceabily" class="nav-link text-white" href="#">Trazabilidad</RouterLink>
         </li>
       </ul>
       <div class="container-fluid">
@@ -35,6 +35,20 @@
 .logo {
     font-family: 'Courgette', cursive;
     font-size: 32px;
+    color: white;
+    font-weight: bolder;
 }
+.navbar {
+  background-color: #223026;
+  color: white;
+}
+.navbar-collapse {
+    flex-grow: 0;
+    align-items: flex-end;
+  }
+.nav-link {
+    width: 120px;
+    margin: 5px 10px;
+  }
 
 </style>
