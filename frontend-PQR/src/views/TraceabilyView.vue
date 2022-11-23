@@ -1,5 +1,5 @@
 <template>
     <div>
-      Traceabily
+      <h2>Traceabily</h2>
     </div>
 </template>

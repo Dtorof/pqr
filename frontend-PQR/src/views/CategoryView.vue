@@ -1,5 +1,5 @@
 <template>
     <div>
-      Categoria view
+      <h2>Categoria view</h2>
     </div>
 </template>

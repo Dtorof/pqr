@@ -1,23 +1,29 @@
 <template>
  <nav class="navbar navbar-expand-sm">
    <div class="container-fluid">
-    <a class="navbar-brand logo" href="javascript:void(0)">PQR Manager</a>
+    <a class="navbar-brand logo" href="javascript:void(0)">PQR Management</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
+         <li class="nav-item">
           <RouterLink to="/" class="nav-link text-white" href="#">Crear PQR</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/createCategory" class="nav-link text-white" href="#">Crear Categoria</RouterLink>
+          <RouterLink to="/user" class="nav-link text-white" href="#">Crear usuario</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/createResponsePQR" class="nav-link text-white" href="#">Responder PQR</RouterLink>
+          <RouterLink to="/customer" class="nav-link text-white" href="#">Crear Cliente</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/createTraceabily" class="nav-link text-white" href="#">Trazabilidad</RouterLink>
+          <RouterLink to="/category" class="nav-link text-white" href="#">Crear Categoria</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/responsePQR" class="nav-link text-white" href="#">Responder PQR</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/traceabily" class="nav-link text-white" href="#">Trazabilidad</RouterLink>
         </li>
       </ul>
       <div class="container-fluid">
