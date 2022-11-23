@@ -4,7 +4,14 @@ import { reactive, ref, onMounted, computed } from "vue";
 const pqrs = ref([])
 
 const dataPqrs = async () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/traceability/d482d41e-16f2-497c-a70d-deea10d5b7a1";
+  const urlData = "https://pqr-production.up.railway.app/api/v1/pqr-users/1";
+  await fetch(urlData)
+    .then((resp) => resp.json())
+    .then((data) => (pqrs.value = data));
+    console.log(pqrs.value)
+};
+const dataEstatusPqrs = async () => {
+  const urlData = "https://pqr-production.up.railway.app/api/v1/traceability";
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
@@ -36,11 +43,11 @@ onMounted(() => {
             </thead>
             <tbody>
               <tr v-for="item in  pqrs" :key="item.name">
-                <th>1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <th v-text="item.customer.names"></th>
+                <td v-text="item.pqrCategory.name"></td>
+                <td v-text="item.updatedAt"></td>
+                <td v-text="item.description"></td>
+                <td v-text="item.status"></td>
                 <td>
                   <a
                     class="navbar-brand"

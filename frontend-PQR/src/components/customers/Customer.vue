@@ -64,22 +64,33 @@ const sendValidations = async () => {
 
 const sendData = async () => {
   console.log("entro2")
-  const formData = new FormData();
-  formData.append("names", state.names);
-  formData.append("surnames", state.surnames);
-  formData.append("email", state.email);
-  formData.append("dateOfBirth", state.dateOfBirth);
-  formData.append("address", state.address);
-  formData.append("phone", state.phone);
-  formData.append("phone", state.documento);
+  // const formData1 = new FormData();
+  // formData.append("names", state.names);
+  // formData.append("surnames", state.surnames);
+  // formData.append("email", state.email);
+  // formData.append("dateOfBirth", state.dateOfBirth);
+  // formData.append("address", state.address);
+  // formData.append("phone", state.phone);
+  // formData.append("phone", state.documento);
 
+  const formData = {
+  names: state.names,
+  surnames: state.surnames,
+  documento:state.email,
+  email: state.dateOfBirth,
+  dateOfBirth: state.address,
+  address: state.phone,
+  phone: state.documento,
+};
+// const form11 = JSON.parse(formData)
+// const obj = JSON.parse('{ "name": state.names,"surnames": state.surnames,"documento":state.email,"email": state.dateOfBirth,"dateOfBirth": state.address,"address": state.phone, "phone": state.documento,}')
+const myJSON = JSON.stringify(formData);
   const urlDB = `https://pqr-production.up.railway.app/api/v1/customer`;
   await fetch(urlDB, {
     method: "POST",
-    body: formData,
+    body: myJSON
   })
     .then((response) => response)
-    
     .catch((error) => {
       console.error("Error:", error);
     });

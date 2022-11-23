@@ -8,8 +8,8 @@ import TraceabilyViewVue from './views/TraceabilyView.vue';
 </script>
 
 <template>
-  <!-- <TraceabilyViewVue/> -->
-  <UserVue/>
+  <TraceabilyViewVue/>
+  <!-- <UserVue/> -->
   <!-- <CustomerVue/> -->
   <!-- <ResponsePQRViewVue/> -->
  <!-- <AdministracionView/>  -->
