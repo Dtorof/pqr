@@ -18,16 +18,3 @@ const fig = arr => arr.map((el,i) => ({
     }
 
 let char = String.fromCharCode(position= 65);
-
-// include: [{
-//     model: models.Proposition,
-//     include: [{
-//         model: Customer
-        
-//     }, {
-//         model: Pqrc
-//     }],
-// where: {
-//     client_id: id
-// },
-// });
