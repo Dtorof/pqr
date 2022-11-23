@@ -9,7 +9,6 @@ import {
 
 export const pqrcRouter = Router()
 
-
 pqrcRouter.get('/', pqrc)
 pqrcRouter.get('/:type_pqr_id', pqrcById)
 pqrcRouter.post('/', createPqrc)

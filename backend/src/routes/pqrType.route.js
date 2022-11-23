@@ -1,4 +1,5 @@
 import { Router } from 'express'
+
 import { 
     pqrtById,
     pqrt,
@@ -8,7 +9,6 @@ import {
  } from '../controllers/pqrType.controller.js'
 
 export const pqrtRouter = Router()
-
 
 pqrtRouter.get('/', pqrt)
 pqrtRouter.get('/:id', pqrtById)

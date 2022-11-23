@@ -1,6 +1,9 @@
 import  { Response } from '../models/response_pqr.model.js'
+import  { Register } from '../models/register_pqr.model.js'
 import { Traceability } from '../models/traceability.model.js'
 import { transporter } from '../helpers/configGmail.js'
+import Customer from '../models/customers.model.js'
+import User from '../models/users.model.js'
 
 export const getResponses = async (req,res) => {
     try{
@@ -14,9 +17,11 @@ export const getResponses = async (req,res) => {
 export const responseById = async (req,res) => {
     const { id } = req.params
     try{
-        const itemId = await Response.findOne({
+        const itemId = await Register.findAll({
+            include: [{model:Customer}, {model:User}],
+            
             where: {
-              id,
+                user_id: id
             },
           });
           

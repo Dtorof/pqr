@@ -1,6 +1,8 @@
 import express from "express"
 import morgan from "morgan"
 import cors from 'cors'
+import  multer  from 'multer'
+import bodyParser  from 'body-parser';
 import { pqrtRouter } from './routes/pqrType.route.js'
 import { pqrcRouter } from './routes/pqrCategory.route.js'
 import { errorRouter } from "./routes/error404.route.js"
@@ -13,11 +15,13 @@ import { customerRouter } from "./routes/customer.route.js"
 import { router } from './routes/auth.route.js'
 import { pqrUserByIdRouter } from "./routes/pqrByUserId.route.js"
 const app = express()
+const upload = multer()
 
 app.use(cors())
 app.use(morgan('dev'))
-app.use(express.json({ limit: '50mb' }))
-app.use(express.urlencoded({ limit: '50mb', extended: false }))
+app.use(bodyParser.json())
+app.use(express.urlencoded({  extended: true }))
+app.use(upload.none())
 
 app.use('/api/v1/complete-pqr', completeRouter)
 app.use('/api/v1/traceability', traceabilityRouter)
@@ -26,8 +30,8 @@ app.use('/api/v1/response-pqr', responseRouter)
 app.use('/api/v1/pqr-type', pqrtRouter)
 app.use('/api/v1/pqr-category', pqrcRouter)
 app.use('/api/v1/user', userRouter)
-app.use('/api/v1/customer', customerRouter)
-app.use('/api/v1/pqr-users', pqrUserByIdRouter)
+app.use('/api/v1/customer',  customerRouter)
+app.use('/api/v1/pqr-users',  pqrUserByIdRouter)
 app.use(router)
 app.use('*', errorRouter)
 
