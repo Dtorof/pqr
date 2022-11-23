@@ -1,6 +1,5 @@
 import express from "express"
 import morgan from "morgan"
-import multer from "multer";
 import cors from 'cors'
 import { pqrtRouter } from './routes/pqrType.route.js'
 import { pqrcRouter } from './routes/pqrCategory.route.js'
@@ -14,12 +13,10 @@ import { customerRouter } from "./routes/customer.route.js"
 import { router } from './routes/auth.route.js'
 import { pqrUserByIdRouter } from "./routes/pqrByUserId.route.js"
 const app = express()
-const upload = multer();
 
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json({ limit: '50mb' }))
-app.use(upload.array()); 
 app.use(express.urlencoded({ limit: '50mb', extended: false }))
 
 app.use('/api/v1/complete-pqr', completeRouter)
