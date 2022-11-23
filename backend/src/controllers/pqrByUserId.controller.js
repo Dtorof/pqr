@@ -16,7 +16,7 @@ export const responseById = async (req,res) => {
         if (itemId) {
             res.status(200).json(itemId);
         } else {
-            res.status(404).json({message: "El usuario no existe"});
+            res.status(404).json({message: "El usuario no existe."});
         }
         
     }catch(err){
