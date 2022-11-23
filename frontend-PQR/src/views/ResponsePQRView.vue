@@ -4,5 +4,4 @@ import ResponseVue from '../components/response_pqr/Response.vue';
 
 <template>
     <ResponseVue/>
-
 </template>
