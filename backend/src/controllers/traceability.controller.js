@@ -1,5 +1,6 @@
+import { Register } from '../models/register_pqr.model.js';
 import  { Traceability } from '../models/traceability.model.js'
-
+import { Customer } from '../models/customers.model.js'
 
 export const getTraceability = async (req,res) => {
     try{
@@ -14,6 +15,7 @@ export const traceabilityById = async (req,res) => {
     const { id } = req.params
     try{
         const itemId = await Traceability.findAll({
+          include: [{model:Register}],
             where: {
               register_pqr_id:id,
             },
