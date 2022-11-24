@@ -42,9 +42,9 @@ http://localhost:7500/api/v1/register-pqr
 
 {
     "client_id" : 2,
-    "user_id" : 1,
+    "user_id" : 12,
     "pqr_category_id" : 1,
-    "description" : "Over permission"
+    "description" : "En proceso"
 }
 
 http://localhost:7500/api/v1/response-pqr
