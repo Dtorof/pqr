@@ -1,6 +1,5 @@
 import { Register } from '../models/register_pqr.model.js';
 import  { Traceability } from '../models/traceability.model.js'
-import { Customer } from '../models/customers.model.js'
 
 export const getTraceability = async (req,res) => {
     try{
