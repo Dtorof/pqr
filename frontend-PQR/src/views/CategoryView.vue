@@ -1,5 +1,8 @@
+<script setup>
+import Category from '../components/category_pqr/Category.vue'
+</script>
 <template>
     <div>
-      <h2>Categoria view</h2>
+      <Category/>
     </div>
 </template>

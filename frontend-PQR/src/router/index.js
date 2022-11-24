@@ -6,7 +6,8 @@ import CustomersView from '../views/CustomersView.vue'
 import CategoryView from '../views/CategoryView.vue'
 import ResponsePQRView from '../views/ResponsePQRView.vue'
 import TraceabilyView from '../views/TraceabilyView.vue'
-
+import TypePQRView from '../views/TypePQRView.vue'
+import PqrView from '../views/PqrView.vue'
 
 
 const router = createRouter({
@@ -22,14 +23,15 @@ const router = createRouter({
       name: 'administration',
       component: () => import('../views/AdministrationView.vue'),
       // children:[
-      //   // {
-      //   //   path: "/CrearPQR",
-      //   //   name: "CrearPQR",
-      //   //   component: () =>
-      //   //     // import("../"),
-      //   // },
+    
       //        ],
 
+    },
+    {
+      path: "/crearPQR",
+      name: "CrearPQR",
+      component: PqrView
+      // import("../"),
     },
     {
       path: "/user",
@@ -42,6 +44,12 @@ const router = createRouter({
       name: "customer",
       component: CustomersView
       // component: () => import("../components/customers/Customer.vue")
+    },
+    {
+      path: "/typePQR",
+      name: "typePQR",
+      component: TypePQRView
+      // component: () => import("../components/category_pqr/Category.vue")
     },
     {
       path: "/category",
