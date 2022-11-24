@@ -1,7 +1,6 @@
 import express from "express"
 import morgan from "morgan"
 import cors from 'cors'
-import  multer  from 'multer'
 import bodyParser  from 'body-parser';
 import { pqrtRouter } from './routes/pqrType.route.js'
 import { pqrcRouter } from './routes/pqrCategory.route.js'
@@ -15,13 +14,11 @@ import { customerRouter } from "./routes/customer.route.js"
 import { router } from './routes/auth.route.js'
 import { pqrUserByIdRouter } from "./routes/pqrByUserId.route.js"
 const app = express()
-const upload = multer()
 
 app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(express.urlencoded({  extended: true }))
-app.use(upload.none())
 
 app.use('/api/v1/complete-pqr', completeRouter)
 app.use('/api/v1/traceability', traceabilityRouter)
