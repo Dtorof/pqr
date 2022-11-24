@@ -6,7 +6,10 @@ import {useRouter } from 'vue-router';
 import { useAuthenticationStore } from '../../stores/authentication';
 
 
-const userAuthentication = useAuthenticationStore(); 
+const user_authen = useAuthenticationStore(); 
+const token_authen = useAuthenticationStore(); 
+const user_name = useAuthenticationStore();
+const user_id = useAuthenticationStore(); 
 
 const  router = useRouter();
 
@@ -87,18 +90,25 @@ const LoginData = async () => {
           1500
         );
         router.push('/administration')
+      } else {
+        messageError("registrarse, por favor...");
       }
       return response.json();
     })
     .then((data) => {
       console.log(data)
-      localStorage.setItem("loguedUserToken", JSON.stringify(data.token));
-      localStorage.setItem("loguedUserName", JSON.stringify(data.user.userName));
-      userAuthentication.addUserAuthen(data.user.userName)
+      token_authen.token(data.token)
+      user_name.userName(data.user.userName)
+      user_id.userId(data.user.id)
+      user_authen.addUserAuthen(data)
+    
+      // console.log( user_authen.addUserAuthen)
+      // console.log( user_authen.getUserId)
+      // console.log(user_authen)
     })
-    // .catch((error) => {
-    //   console.error("Error:", error);
-    // });
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 };
 
 </script>

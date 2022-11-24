@@ -4,23 +4,29 @@ import { useRouter } from 'vue-router';
 import { useAuthenticationStore } from '../../stores/authentication';
 
 
-const userAuthentication = useAuthenticationStore(); 
-console.log(userAuthentication)
+const user_name = useAuthenticationStore(); 
+const token_authen = useAuthenticationStore(); 
+const user_authen = useAuthenticationStore(); 
+const user_id = useAuthenticationStore(); 
+
+// console.log( user_authen.addUserAuthen)
+// console.log( user_authen.getUserId)
+// console.log(user_authen)
 
 const router = useRouter()
 let sessionUser =  ref("")
 
-const data = () => {
-  sessionUser.value = JSON.parse(localStorage.getItem("loguedUserName"));
-  console.log(sessionUser.value);
-}
 onMounted(() => {
-data()
+  token_authen.addToken()
+  // console.log(user_authen.addUserAuthen())
+  user_id.addId()
+  user_name.addUserName()
 });
 
 const logout = () => {
   localStorage.removeItem("loguedUserName")
   localStorage.removeItem("loguedUserToken")
+  localStorage.removeItem("loguedUserId")
   router.push('/')
 }
 </script>
@@ -63,7 +69,7 @@ const logout = () => {
           <a class="navbar-brand avatar-icon" href="#">
               <img  src="https://www.svgrepo.com/show/209349/user-avatar.svg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
           </a>
-          <span class="text-white">{{sessionUser}}</span>
+          <span class="text-white">{{user_name.getUserName}}</span>
         </li>
         <li class="nav-item">
           <RouterLink to="/" @click="logout" class="nav-link active" href="#">
