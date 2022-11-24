@@ -17,10 +17,10 @@ export const getRegisters = async (req,res) => {
 export const registerById = async (req,res) => {
     const { id } = req.params
     try{
-        const registerId = await Register.findOne({
+        const registerId = await Register.findAll({
           include: [{model:Customer}, {model:Pqrc}],
             where: {
-              client_id: id,
+              user_id: id,
             },
           });
 
