@@ -7,12 +7,13 @@ import { required,email} from "@vuelidate/validators";
 const state = reactive({
   names: "",
   surnames: "",
-  documento:"",
+  document:"",
   email: "",
   dateOfBirth: "",
   address: "",
   phone: "",
 });
+
 
 const customer = ref([])
 
@@ -38,7 +39,7 @@ const rules = computed(() => {
       required,
     },
    
-    documento: {
+    document: {
       required,
     },
   };
@@ -64,33 +65,22 @@ const sendValidations = async () => {
 
 const sendData = async () => {
   console.log("entro2")
-  // const formData1 = new FormData();
-  // formData.append("names", state.names);
-  // formData.append("surnames", state.surnames);
-  // formData.append("email", state.email);
-  // formData.append("dateOfBirth", state.dateOfBirth);
-  // formData.append("address", state.address);
-  // formData.append("phone", state.phone);
-  // formData.append("phone", state.documento);
+  const formData = new FormData();
+  formData.append("names", state.names);
+  formData.append("surnames", state.surnames);
+  formData.append("email", state.email);
+  formData.append("dateOfBirth", state.dateOfBirth);
+  formData.append("address", state.address);
+  formData.append("phone", state.phone);
+  formData.append("document", state.document);
 
-  const formData = {
-  names: state.names,
-  surnames: state.surnames,
-  documento:state.email,
-  email: state.dateOfBirth,
-  dateOfBirth: state.address,
-  address: state.phone,
-  phone: state.documento,
-};
-// const form11 = JSON.parse(formData)
-// const obj = JSON.parse('{ "name": state.names,"surnames": state.surnames,"documento":state.email,"email": state.dateOfBirth,"dateOfBirth": state.address,"address": state.phone, "phone": state.documento,}')
-const myJSON = JSON.stringify(formData);
   const urlDB = `https://pqr-production.up.railway.app/api/v1/customer`;
   await fetch(urlDB, {
     method: "POST",
-    body: myJSON
+    body: formData,
   })
     .then((response) => response)
+    
     .catch((error) => {
       console.error("Error:", error);
     });
@@ -138,7 +128,7 @@ const clear = () => {
   state.dateOfBirth= "";
   state.address= "";
   state.phone= "";
-  state.documento="";
+  state.document="";
 };
 
 onMounted(() => {
@@ -220,7 +210,7 @@ onMounted(() => {
       <div class="form-floating mb-3">
         <input
         v-model="state.dateOfBirth"
-          type="text"
+          type="date"
           class="form-control"
           id="floatingPassword"
           :class="{ 'is-invalid': $v.dateOfBirth.$error }"
@@ -237,16 +227,16 @@ onMounted(() => {
       </div>
       <div class="form-floating mb-3">
         <input
-        v-model="state.documento"
+        v-model="state.document"
           type="text"
           class="form-control"
           id="floatingPassword"
-          :class="{ 'is-invalid': $v.documento.$error }"
+          :class="{ 'is-invalid': $v.document.$error }"
 
         />
         <label class="label1" for="floatingPassword">Numero de documento</label>
         <span
-              v-for="error in $v.documento.$errors"
+              v-for="error in $v.document.$errors"
               :key="error.$uid"
               class="text-danger"
             >

@@ -1,6 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AdministrationView from '../views/AdministrationView.vue'
+import UserView from '../views/UserView.vue'
+import CustomersView from '../views/CustomersView.vue'
+import CategoryView from '../views/CategoryView.vue'
+import ResponsePQRView from '../views/ResponsePQRView.vue'
+import TraceabilyView from '../views/TraceabilyView.vue'
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,34 +21,51 @@ const router = createRouter({
       path: '/administration',
       name: 'administration',
       component: () => import('../views/AdministrationView.vue'),
-      children:[
-        // {
-        //   path: "/CrearPQR",
-        //   name: "CrearPQR",
-        //   component: () =>
-        //     // import("../module_administration/components/Create_Employees.vue"),
-        // },
-        {
-          path: "/createCategory",
-          name: "createCategory",
-          component: () =>
-            import("../views/CategoryView.vue"),
-        },
-        {
-          path: "/createResponsePQR",
-          name: "createResponsePQR",
-          component: () =>
-            import("../views/ResponsePQRView.vue"),
-        },
-        {
-          path: "/createTraceabily",
-          name: "createTraceabily",
-          component: () =>
-            import("../views/TraceabilyView.vue"),
-        }
+      // children:[
+      //   // {
+      //   //   path: "/CrearPQR",
+      //   //   name: "CrearPQR",
+      //   //   component: () =>
+      //   //     // import("../"),
+      //   // },
+      //        ],
 
-      ]
-    }
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: UserView 
+      // component: () => import("../components/users/User.vue")
+    },
+    {
+      path: "/customer",
+      name: "customer",
+      component: CustomersView
+      // component: () => import("../components/customers/Customer.vue")
+    },
+    {
+      path: "/category",
+      name: "category",
+      component: CategoryView
+      // component: () => import("../components/category_pqr/Category.vue")
+    },
+    {
+      path: "/responsePQR",
+      name: "responsePQR",
+      component: ResponsePQRView
+      // component: () => import("../components/response_pqr/Response.vue")
+    },
+    {
+      path: "/traceabily",
+      name: "traceabily",
+      component: TraceabilyView
+      // component: () => import("../views/TraceabilyView.vue")
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: () => import("../NotFoundView.vue"),
+   },
   ]
 })
 

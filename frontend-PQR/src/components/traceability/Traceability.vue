@@ -1,31 +1,73 @@
 <script setup>
 import { reactive, ref, onMounted, computed } from "vue";
+import LineTime from "./LineTime.vue"
 
-const pqrs = ref([])
+import { useData1 } from "@/stores/ensayo";
+import { storeToRefs } from "pinia";
+
+const dataPinea = useData1(); //no olvidar los parentisis
+
+//desestructurar
+
+const {add} = dataPinea;
+
+//a las variables reactivas que vienen de pinia debo colocarle .value ademas se desestructuran con storeToRefs(xxx)
+const {data1} = storeToRefs(dataPinea);
+
+
+
+
+const pqrs = ref([]);
+const idUrl = ref("");
 
 const dataPqrs = async () => {
   const urlData = "https://pqr-production.up.railway.app/api/v1/pqr-users/1";
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
-    console.log(pqrs.value)
+  // console.log(pqrs.value)
 };
 const dataEstatusPqrs = async () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/traceability";
+  const urlData = `https://pqr-production.up.railway.app/api/v1/traceability/${idUrl.value}`;
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
-    console.log(pqrs.value)
+    data1.value = pqrs.value
+    console.log("yupi",data1.value)
+  // console.log("url", urlData);
+};
+
+const sendData = (data) => {
+  idUrl.value = data.id;
+
+  // console.log("prueba", idUrl.value);
+
+  dataEstatusPqrs();
+
+  // console.log(pqrs.value);
+
+  action.value = false;
+  state.name = data.name;
+  state.phoneNumber = data.phoneNumber;
+  state.role_id = data.role_id;
+  state.email = data.email;
+  state.password = data.password;
+  state.address = data.address;
+  state.role_id = data.role_id;
+  idUrl.value = data.id;
 };
 
 onMounted(() => {
-    dataPqrs();
-  
+  dataPqrs();
 });
-
 </script>
 
 <template>
+  
+
+<LineTime/>
+
+
   <div class="col m-5">
     <div class="row" id="tabla">
       <div class="container pe-4 ps-4">
@@ -42,7 +84,7 @@ onMounted(() => {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in  pqrs" :key="item.name">
+              <tr v-for="item in pqrs" :key="item.client_id">
                 <th v-text="item.customer.names"></th>
                 <td v-text="item.pqrCategory.name"></td>
                 <td v-text="item.updatedAt"></td>
@@ -50,11 +92,14 @@ onMounted(() => {
                 <td v-text="item.status"></td>
                 <td>
                   <a
-                    class="navbar-brand"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    class="navbar-brand"  
                     href="#"
+                    @click="sendData(item),add(item)"
                   >
                     <i class="fa-solid fa-clock icon"></i
                   ></a>
+                  <!-- <button @click="sendData(item)" type="button">hola</button> --| -->
                 </td>
               </tr>
             </tbody>
@@ -62,7 +107,8 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
+  </div> 
+
 </template>
 <style scoped>
 .table-header {

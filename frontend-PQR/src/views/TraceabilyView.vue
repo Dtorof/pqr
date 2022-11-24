@@ -7,4 +7,5 @@ import TraceabilityVue from '../components/traceability/Traceability.vue';
 <template>
     <!-- <LineTime/> -->
     <TraceabilityVue/>
+    
 </template>

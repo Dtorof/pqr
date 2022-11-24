@@ -1,10 +1,9 @@
 <script setup>
 import Navbar from '../components/navbar/Navbar.vue'
-
+// import CustomersView from '../views/CustomersView.vue'
 </script>
 <template>
     <div class="container-main">
-        <Navbar/>
         <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.slnsoftwares.com%2Fimages%2Fgif%2Fwebdevelopment10.gif&f=1&nofb=1&ipt=b13139b05e6ee422320b34cf1713cf1e31c4758181422de8a198787759858ada&ipo=images"/>
     </div>
 </template>
