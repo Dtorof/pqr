@@ -3,6 +3,7 @@ import { Customer } from '../models/customers.model.js'
 import { Traceability } from '../models/traceability.model.js'
 import { transporter } from '../helpers/configGmail.js'
 import { v4 } from 'uuid'
+import Pqrc from '../models/pqrCategory.model.js'
 
 export const getRegisters = async (req,res) => {
     try{
@@ -17,9 +18,9 @@ export const registerById = async (req,res) => {
     const { id } = req.params
     try{
         const registerId = await Register.findOne({
-          include: [{model:Customer}],
+          include: [{model:Customer}, {model:Pqrc}],
             where: {
-              id,
+              client_id: id,
             },
           });
 
