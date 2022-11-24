@@ -66,20 +66,14 @@ const messageError = ( text) => {
   });
 };
 const RegistrationCategory = async () => {
-//   const formData = new FormData();
-//   formData.append("id", formCategory.type);
-//   formData.append("name", formCategory.name);
-  
-//   console.log(formData)
-   let category = {
-      id: formCategory.type,
-      name: formCategory.name,
-    }
-    console.log("obj",category)
+  const formData = new FormData();
+  formData.append("type_pqr_id", formCategory.type);
+  formData.append("name", formCategory.name);
+    
   const urlDB = `https://pqr-production.up.railway.app/api/v1/pqr-category`;
   await fetch(urlDB, {
     method: "POST",
-    body: JSON.stringify(category),
+    body: formData,
   })
     .then((response) => {
       console.log(response)
