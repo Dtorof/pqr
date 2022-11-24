@@ -1,4 +1,5 @@
 import  { Register } from '../models/register_pqr.model.js'
+import { Customer } from '../models/customers.model.js'
 import { Traceability } from '../models/traceability.model.js'
 import { transporter } from '../helpers/configGmail.js'
 import { v4 } from 'uuid'
@@ -16,6 +17,7 @@ export const registerById = async (req,res) => {
     const { id } = req.params
     try{
         const registerId = await Register.findOne({
+          include: [{model:Customer}],
             where: {
               id,
             },
