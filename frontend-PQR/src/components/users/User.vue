@@ -108,6 +108,8 @@ const messageCreate = (position, title, text, time) => {
   });
 };
 
+console.log("hecho")
+
 const clear = () => {
   $v.value.$reset() // ayuda a que no este todo en rojo
   state.name= "";

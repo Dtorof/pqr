@@ -51,19 +51,13 @@ const messageError = ( text) => {
   });
 };
 const RegistrationType_PQR = async () => {
-//   const formData = new FormData();
-//   formData.append("name", type_PQR.name);
+  const formData = new FormData();
+  formData.append("name", type_PQR.name);
  
-//  console.log(formData.name)
-  let type = {
-    name: type_PQR.name
-  }
-  console.log(type)
-// console.log(formData)
-  const urlDB = `https://pqr-production.up.railway.app/api/v1/pqr-category`;
+  const urlDB = `https://pqr-production.up.railway.app/api/v1/pqr-type`;
   await fetch(urlDB, {
     method: "POST",
-    body: JSON.stringify(type),
+    body: formData,
   })
     .then((response) => {
       console.log(response)

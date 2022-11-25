@@ -1,9 +1,9 @@
 <script setup>
-import { reactive, onMounted, computed } from 'vue'
+import { reactive, ref, onMounted, computed } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, maxLength, minValue, numeric,alpha, helpers } from '@vuelidate/validators'
 
-const Categorys = reactive([]);
+const categorys = reactive([]);
 
 const formCreatePQR = reactive({
   client: "",
@@ -11,20 +11,38 @@ const formCreatePQR = reactive({
   type:"",
   description: "",
 }); 
+
+const state = reactive ({
+    customers: [],
+    filterCustomers: computed(()=> searchCustomers())
+})
+
+const searchCustomers = () => {
+  // return state.customers.filter((customer) => customer.names.includes(state.names.toLowerCase()))
+  let search = state.customers.filter((customer) => customer.names.includes(formCreatePQR.client))
+  console.log("search...🔎",search)
+   return search 
+}
+
 const getCategorys = () => {
   const urlData = "https://pqr-production.up.railway.app/api/v1/pqr-category"
       fetch(urlData)
       .then(resp => resp.json())
-      .then(data => Categorys.value= data)
-      console.log(Categorys)
+      .then(data => categorys.value= data)
+      console.log(categorys)
 }
 
+const getCustomer = () => {
+  const urlBD = "https://pqr-production.up.railway.app/api/v1/customer"
+  fetch(urlBD)
+  .then(resp => resp.json())
+  .then(data => state.customers.value = data)
+  console.log(state.customers)
+}
 onMounted(() => {
   getCategorys();
+  getCustomer();
 })
-
-
-
 const rules = computed (() =>{
   return {  
     client: { 
@@ -54,8 +72,6 @@ const submitForm = async () => {
     messageError("Verifique que todos los campos este llenos");
   }
 };
-
-
 
 const message = (position, title, text, time) => {
   Swal.fire({
@@ -114,13 +130,15 @@ const clear=() =>{
     <form class="container my-5" @submit.prevent="submitForm()">
         <div class="mb-3">
         <label for="disabledTextInput" class="form-label">Cliente</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Busque el cliente"  v-model="formCreatePQR.client">
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="Nombre del cliente"  v-model="formCreatePQR.client">
         <span v-for="error in v$.client.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
         </div>
+        {{state.filterCustomers}}
         <div class="mb-3">
             <label for="disabledSelect" class="form-label">Categoria</label>
             <select id="disabledSelect" class="form-select"  v-model="formCreatePQR.category">
-                <option>Seleccione una categoria</option>
+              <option>Seleccione una categoria</option>
+              <option v-for="(item,i) in categorys.value" :value="item.id" v-text="item.name" :key="i"></option>
             </select>
             <span v-for="error in v$.category.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
         </div>
