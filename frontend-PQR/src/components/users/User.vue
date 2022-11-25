@@ -150,8 +150,8 @@ const watchComponents2 = () => {
       
     "
   >
-  <form @submit.prevent="sendValidations()">
-    <h1 class="title mb-3">Crear usuarios</h1>
+  <form class="px-5 py-3" @submit.prevent="sendValidations()">
+    <h1 class="title mb-3 pb-3">Crear usuarios</h1>
     <div class="row">
 
       <div class="form-floating mb-3">
@@ -229,15 +229,15 @@ const watchComponents2 = () => {
               {{ (error.$message = "Por favor ingrese una contraseña") }}
             </span>
       </div>
-      <div class="col btn1">
-        <button class="btn " type="submit" >Guardar</button>
+      <div class="col btn1 my-2">
+        <button class="btn py-2" type="submit" >Guardar</button>
       </div>
     </div>
   </form>
   </div>
 
   <div class="col btn3">
-      <button @click="watchComponents()" class="btn btn2" type="submit">
+      <button @click="watchComponents()" class="btn btn2 py-2" type="submit">
         Ver usuarios
       </button>
     </div>
@@ -248,7 +248,7 @@ const watchComponents2 = () => {
     <!-- <h1 class="justify-content-center text-center mt-1">Usuarios</h1> -->
     <div class="col m-3">
       <div class="row" id="tabla">
-        <div class="container1 pe-4 ps-4">
+        <div class="container1 pe-5 ps-5">
           <div class="table-responsive">
             <table class="table text-center">
               
@@ -303,7 +303,7 @@ const watchComponents2 = () => {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   border-radius: 10px;
- 
+  width: 100%;
 }
 .label1{
   font-family: 'Roboto', sans-serif;
@@ -349,6 +349,7 @@ body{
   border-color: var(--gray-black);
 }
 .table-header {
+  color: rgb(127, 124, 124);
   background: rgba(37, 219, 148, 0.7);
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);

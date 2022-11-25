@@ -1,17 +1,19 @@
 <script setup>
 import ModalResponseVue from "./ModalResponse.vue";
 import { reactive, ref, onMounted, computed } from "vue";
-import { useData1 } from "@/stores/ensayo";
 import { storeToRefs } from "pinia";
+import { useData1 } from "@/stores/ensayo";
+import { useAuthenticationStore } from '@/stores/authentication';
 
 const dataPinea = useData1(); //no olvidar los parentisis
+const user_id = useAuthenticationStore(); 
 
 const {pqrsPinia} = storeToRefs(dataPinea);
 
 const pqrs = ref([]);
 
 const dataPqrs = async () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/register-pqr/3";//no es fijo ese tres
+  const urlData = `https://pqr-production.up.railway.app/api/v1/register-pqr/${user_id.getUserId}`;
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
@@ -22,13 +24,7 @@ const dataPqrs = async () => {
    
   
 };
-// const dataEstatusPqrs = async () => {
-//   const urlData = "https://pqr-production.up.railway.app/api/v1/traceability";
-//   await fetch(urlData)
-//     .then((resp) => resp.json())
-//     .then((data) => (pqrs.value = data));
-//   console.log(pqrs.value);
-// };
+
 
 const sendData = (data) => {
   pqrsPinia.value=data
@@ -70,7 +66,7 @@ onMounted(() => {
                 <td>
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn2"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal999"
                     @click="sendData(item)"
@@ -96,6 +92,7 @@ onMounted(() => {
 }
 .btn2 {
   background-color: var(--blue-purple);
+  color: var(--white);
 }
 .icon {
   color: var(--blue-purple);
@@ -105,4 +102,5 @@ onMounted(() => {
   justify-content: center;
   text-align: center;
 }
+
 </style>
