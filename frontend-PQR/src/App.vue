@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from '../src/components/navbar/Navbar.vue'
+import LoginYeniVue from './components/LoginYeni.vue';
 // import { onMounted } from 'vue'
 
 // const  router = useRouter();
@@ -14,9 +15,12 @@ import Navbar from '../src/components/navbar/Navbar.vue'
 // })
 
 
+
+
 </script>
 
 <template>
+  <!-- <LoginYeniVue/> -->
   <Navbar/>
   <RouterView />
 </template>
