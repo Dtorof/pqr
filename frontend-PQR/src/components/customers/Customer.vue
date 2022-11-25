@@ -141,8 +141,8 @@ const watchComponents2 = () => {
 <template>
   <div v-if="watch">
     <div class="container justify-content-center text-center p-3 mb-5 mt-5">
-      <form @submit.prevent="sendValidations()">
-        <h1 class="title mb-3">Crear clientes</h1>
+      <form class="px-5 py-3" @submit.prevent="sendValidations()">
+        <h1 class="title mb-3 pb-3">Crear clientes</h1>
         <div class="row">
           <div class="form-floating mb-3">
             <input
@@ -270,15 +270,15 @@ const watchComponents2 = () => {
               {{ (error.$message = "Por favor ingrese un teléfono") }}
             </span>
           </div>
-          <div class="col  ">
-            <button class="btn btn1" type="submit">Guardar</button>
+          <div class="col my-2  ">
+            <button class="btn  btn1 py-2" type="submit">Guardar</button>
           </div>
         </div>
       </form>
     </div>
 
     <div class="col btn3">
-      <button @click="watchComponents()" class="btn btn2" type="submit">
+      <button @click="watchComponents()" class="btn btn2 py-2" type="submit">
         Ver clientes
       </button>
     </div>
@@ -288,11 +288,11 @@ const watchComponents2 = () => {
     <!-- <h1 class="justify-content-center text-center mt-1">Clientes</h1> -->
     <div class="col m-3">
       <div class="row" id="tabla">
-        <div class="container1 pe-4 ps-4">
+        <div class="container1 pe-5 ps-5">
           <div class="table-responsive">
-            <table class="table">
+            <table class="table text-center">
               
-              <thead class="table-header">
+              <thead class="table-header ">
                 <tr>
                   <th class="col-2">Cliente</th>
                   <th class="col-2">Documento</th>
@@ -330,6 +330,8 @@ const watchComponents2 = () => {
 .container {
   width: 50%;
   justify-content: center;
+  text-align: center;
+  align-items: center;
   opacity: 0.8;
   border-radius: 30px;
   background: rgba(37, 219, 148, 0.7);
@@ -342,6 +344,7 @@ const watchComponents2 = () => {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   border-radius: 10px;
+  width: 100%;
 }
 .label1 {
   font-family: "Roboto", sans-serif;
@@ -353,7 +356,7 @@ body {
 }
 .btn1  {
   width: 99%;
-  height: 100%;
+  height: 120%;
   border-radius: 8px;
   background-color: var(--white);
   color: var(--gray-black);
@@ -388,6 +391,7 @@ body {
 }
 
 .table-header {
+  color: rgb(127, 124, 124);
   background: rgba(37, 219, 148, 0.7);
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);

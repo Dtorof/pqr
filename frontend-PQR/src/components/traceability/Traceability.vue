@@ -2,8 +2,19 @@
 import { reactive, ref, onMounted, computed } from "vue";
 import LineTime from "./LineTime.vue"
 
+import { useAuthenticationStore } from '@/stores/authentication';
+
+
+
+
 import { useData1 } from "@/stores/ensayo";
 import { storeToRefs } from "pinia";
+
+// user_id.addId()
+const user_id = useAuthenticationStore(); 
+
+
+
 
 const dataPinea = useData1(); //no olvidar los parentisis
 
@@ -20,12 +31,14 @@ const {data1} = storeToRefs(dataPinea);
 const pqrs = ref([]);
 const idUrl = ref("");
 
+
+
 const dataPqrs = async () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/pqr-users/1";
+  const urlData = `https://pqr-production.up.railway.app/api/v1/pqr-users/${user_id.getUserId}`;
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
-  // console.log(pqrs.value)
+console.log(urlData)
 };
 const dataEstatusPqrs = async () => {
   const urlData = `https://pqr-production.up.railway.app/api/v1/traceability/${idUrl.value}`;
@@ -33,31 +46,21 @@ const dataEstatusPqrs = async () => {
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
     data1.value = pqrs.value
-    console.log("yupi",data1.value)
+   
   // console.log("url", urlData);
 };
 
 const sendData = (data) => {
   idUrl.value = data.id;
 
-  // console.log("prueba", idUrl.value);
 
   dataEstatusPqrs();
 
-  // console.log(pqrs.value);
 
-  // action.value = false;
-  // state.name = data.name;
-  // state.phoneNumber = data.phoneNumber;
-  // state.role_id = data.role_id;
-  // state.email = data.email;
-  // state.password = data.password;
-  // state.address = data.address;
-  // state.role_id = data.role_id;
-  // idUrl.value = data.id;
 };
 
 onMounted(() => {
+
   dataPqrs();
 });
 </script>
