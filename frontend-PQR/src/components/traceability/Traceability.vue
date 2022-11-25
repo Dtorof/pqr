@@ -46,15 +46,15 @@ const sendData = (data) => {
 
   // console.log(pqrs.value);
 
-  action.value = false;
-  state.name = data.name;
-  state.phoneNumber = data.phoneNumber;
-  state.role_id = data.role_id;
-  state.email = data.email;
-  state.password = data.password;
-  state.address = data.address;
-  state.role_id = data.role_id;
-  idUrl.value = data.id;
+  // action.value = false;
+  // state.name = data.name;
+  // state.phoneNumber = data.phoneNumber;
+  // state.role_id = data.role_id;
+  // state.email = data.email;
+  // state.password = data.password;
+  // state.address = data.address;
+  // state.role_id = data.role_id;
+  // idUrl.value = data.id;
 };
 
 onMounted(() => {
@@ -85,7 +85,7 @@ onMounted(() => {
             </thead>
             <tbody>
               <tr v-for="item in pqrs" :key="item.client_id">
-                <th v-text="item.customer.names"></th>
+                <th v-text="item.customer.fullName"></th>
                 <td v-text="item.pqrCategory.name"></td>
                 <td v-text="item.updatedAt"></td>
                 <td v-text="item.description"></td>
@@ -95,7 +95,7 @@ onMounted(() => {
                   data-bs-toggle="modal" data-bs-target="#exampleModal"
                     class="navbar-brand"  
                     href="#"
-                    @click="sendData(item),add(item)"
+                    @click="sendData(item)"
                   >
                     <i class="fa-solid fa-clock icon"></i
                   ></a>

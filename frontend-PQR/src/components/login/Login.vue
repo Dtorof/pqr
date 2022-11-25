@@ -1,18 +1,25 @@
-<script setup>
+<script setup >
 import { reactive, ref, onMounted, computed} from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, maxLength, minValue, numeric,alpha, helpers } from '@vuelidate/validators'
+import {useRouter } from 'vue-router';
+import { useAuthenticationStore } from '../../stores/authentication';
+
+
+const addData = ref([])
+
+const userAuthentication = useAuthenticationStore(); 
+
+const  router = useRouter();
 
 const formLogin = reactive({
-  user: "",
+  userName: "",
   password: "",
 }); 
-const loguedUser = ref({})
-const users = reactive([]);
 
 const rules = computed (() =>{
   return {
-    user: { 
+    userName: { 
       required:helpers.withMessage("El campo usuario es obligatorio", required ), 
     },
     password: {
@@ -24,44 +31,17 @@ const rules = computed (() =>{
 //inicializar para ver el la data dentro del componente
 const v$ = useVuelidate(rules, formLogin)
 
-const submitForm = async (user, key) => {
+const submitForm = async () => {
   const result = await v$.value.$validate();
   if(result) {
-    authen(user, key);
-    message(
-      "center",
-      "Se inicio sesión correctamente",
-      "¡Bienvenido!",
-      1500
-    );
+    LoginData();
     clear();
   } else {
     messageError("Verifique que todos los campos este llenos y que las credenciales sean las correctas");
   }
 };
 
-const getUsers = () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/user"
-      fetch(urlData)
-      .then(resp => resp.json())
-      .then(data => users.value= data) 
-      console.log(users)
-}
 
-onMounted(() => {
-  getUsers();
-})
-
-const authen = (user, key) => {
-   let session = users.value.filter((userName, password )=> userName === user && password === key)
-   loguedUser.value = { ...formLogin}
-   console.log(loguedUser.value)
-}
-const clear=() =>{
-   v$.value.$reset()
-   formLogin.user = '';
-   formLogin.password = '';
-}
 const message = (position, title, text, time) => {
   Swal.fire({
     position: position,
@@ -72,6 +52,7 @@ const message = (position, title, text, time) => {
     timer: time,
   });
 };
+
 const messageError = ( text) => {
   Swal.fire({
     icon: "error",
@@ -80,15 +61,59 @@ const messageError = ( text) => {
   });
 };
 
+const clear=() =>{
+   v$.value.$reset()
+   formLogin.userName = '';
+   formLogin.password = '';
+}
+
+
+const LoginData = async () => {
+  const formData = new FormData();
+  formData.append("userName", formLogin.userName);
+  formData.append("password", formLogin.password);
+  
+// console.log(formData)
+  const urlDB = `https://pqr-production.up.railway.app/api/v1/auth/login`;
+  await fetch(urlDB, {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+
+      // console.log(response)
+      if(response.status == 200) {
+          message(
+          "center",
+          "Se inicio sesión correctamente",
+          "¡Bienvenido!",
+          1500
+        );
+        router.push('/administration')
+      }
+      return response.json();
+    })
+    .then((data) => {
+
+      console.log("yeni",data)
+      localStorage.setItem("loguedUserToken", JSON.stringify(data.token));
+      localStorage.setItem("loguedUserName", JSON.stringify(data.user.userName));
+      userAuthentication.addUserAuthen(data.user.userName)
+    })
+    // .catch((error) => {
+    //   console.error("Error:", error);
+    // });
+};
+
 </script>
 <template>
-    <div>
-      <form class="form" @submit.prevent="submitForm(user, key)">
+   <div>
+      <form class="form" @submit.prevent="submitForm()">
         <h2 class="form-title my-3">Inicio de Sesión</h2>
         <div class="mb-3">
           <label for="exampleInputUser" class="form-label">Usuario</label>
-          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="userHelp" v-model="formLogin.user">
-          <span v-for="error in v$.user.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="userHelp" v-model="formLogin.userName">
+          <span v-for="error in v$.userName.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Contraseña</label>

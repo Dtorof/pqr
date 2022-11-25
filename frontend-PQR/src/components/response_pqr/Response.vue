@@ -1,22 +1,40 @@
 <script setup>
 import ModalResponseVue from "./ModalResponse.vue";
 import { reactive, ref, onMounted, computed } from "vue";
+import { useData1 } from "@/stores/ensayo";
+import { storeToRefs } from "pinia";
+
+const dataPinea = useData1(); //no olvidar los parentisis
+
+const {pqrsPinia} = storeToRefs(dataPinea);
 
 const pqrs = ref([]);
 
 const dataPqrs = async () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/pqr-users/1";
+  const urlData = "https://pqr-production.up.railway.app/api/v1/register-pqr/3";//no es fijo ese tres
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
-  console.log(pqrs.value);
+    console.log(pqrs.value);
+
+    //asigne la data a la variable de
+
+   
+  
 };
-const dataEstatusPqrs = async () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/traceability";
-  await fetch(urlData)
-    .then((resp) => resp.json())
-    .then((data) => (pqrs.value = data));
-  console.log(pqrs.value);
+// const dataEstatusPqrs = async () => {
+//   const urlData = "https://pqr-production.up.railway.app/api/v1/traceability";
+//   await fetch(urlData)
+//     .then((resp) => resp.json())
+//     .then((data) => (pqrs.value = data));
+//   console.log(pqrs.value);
+// };
+
+const sendData = (data) => {
+  pqrsPinia.value=data
+  console.log(pqrsPinia.value)
+
+
 };
 
 onMounted(() => {
@@ -43,10 +61,10 @@ onMounted(() => {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in pqrs" :key="item.name">
-                <th v-text="item.customer.names"></th>
+              <tr v-for="item in pqrs" :key="item.id">
+                <th v-text="item.customer.fullName"></th>
                 <td v-text="item.pqrCategory.name"></td>
-                <td v-text="item.updatedAt"></td>
+                <td v-text="item.date_register"></td>
                 <td v-text="item.description"></td>
                 <td v-text="item.status"></td>
                 <td>
@@ -55,8 +73,9 @@ onMounted(() => {
                     class="btn btn-primary"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal999"
+                    @click="sendData(item)"
                   >
-                    Launch demo modal
+                    Responder
                   </button>
                 </td>
               </tr>

@@ -1,6 +1,6 @@
 <script setup>
-import Navbar from '../components/navbar/Navbar.vue'
-// import CustomersView from '../views/CustomersView.vue'
+// import Navbar from '../components/navbar/Navbar.vue'
+// // import CustomersView from '../views/CustomersView.vue'
 </script>
 <template>
     <div class="container-main">

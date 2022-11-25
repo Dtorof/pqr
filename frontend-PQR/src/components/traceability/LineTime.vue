@@ -50,9 +50,7 @@ console.log(data1.value);
                     </header>
                     <div class="card__content">
                       <p>
-                        Attends the Philadelphia Museum School of Industrial
-                        Art. Studies design with Alexey Brodovitch, art director
-                        at Harper's Bazaar, and works as his assistant.
+                       {{item.register.description}}
                       </p>
                     </div>
                   </div>
@@ -312,6 +310,7 @@ p:last-child {
   margin-left: auto;
   margin-right: auto;
   margin-top: -20%;
+  margin-bottom: -10%;
 }
 
 .substack {

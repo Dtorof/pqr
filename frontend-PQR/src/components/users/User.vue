@@ -3,6 +3,9 @@ import { reactive, ref, onMounted, computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required} from "@vuelidate/validators";
 
+const watch = ref(true);
+const watchNot = ref(false);
+
 const state = reactive({
   name: "",
   userName: "",
@@ -117,8 +120,21 @@ onMounted(() => {
   dataUser();
   
 });
+
+const watchComponents = () => {
+  watch.value = false;
+  watchNot.value = true;
+};
+const watchComponents2 = () => {
+  watch.value = true;
+  watchNot.value = false;
+};
+
 </script>
 <template>
+  <div v-if="watch">
+
+  
   <div
     class="
       container
@@ -217,6 +233,54 @@ onMounted(() => {
     </div>
   </form>
   </div>
+
+  <div class="col btn3">
+      <button @click="watchComponents()" class="btn btn2" type="submit">
+        Ver usuarios
+      </button>
+    </div>
+
+</div>
+
+<div class="mt-5" v-if="watchNot">
+    <!-- <h1 class="justify-content-center text-center mt-1">Usuarios</h1> -->
+    <div class="col m-3">
+      <div class="row" id="tabla">
+        <div class="container1 pe-4 ps-4">
+          <div class="table-responsive">
+            <table class="table text-center">
+              
+              <thead class="table-header">
+                <tr>
+                  <th class="col-3">Id</th>
+                  <th class="col-3">Nombre</th>
+                  <th class="col-3">Documento</th>
+                  <th class="col-3">Usuario</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in user" :key="item.id">
+                  <th v-text="item.id"></th>
+                  <td v-text="item.name"></td>
+                  <td v-text="item.document"></td>
+                  <td v-text="item.userName"></td>
+                
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col btn3 ">
+      <button @click="watchComponents2()" class="btn btn2" type="submit">
+        Crear usuarios
+      </button>
+    </div>
+  </div>
+
 </template>
 <style scoped >
 
@@ -260,4 +324,33 @@ body{
   color: var(--white);
 }
 
+
+.btn3{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.btn2 {
+  
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 2%;
+}
+
+.btn2:hover {
+  background-color: var(--white);
+  color: var(--gray-black);
+  border-color: var(--gray-black);
+}
+.table-header {
+  background: rgba(37, 219, 148, 0.7);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(37, 219, 148, 0.35);
+  justify-content: center;
+}
 </style>

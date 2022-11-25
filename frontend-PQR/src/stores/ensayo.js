@@ -5,7 +5,10 @@ export const useData1 = defineStore("data1", () => {
     
     //estado 
     const data1 = ref([]);
-    // const pqrs = ref([]);
+    const pqrsPinia = ref([]);
+
+
+
     //acciones
 
     const add = (data) => {
@@ -32,8 +35,8 @@ export const useData1 = defineStore("data1", () => {
     return {
         
         data1,
-     
         add,
+        pqrsPinia,
 
     };
 });
