@@ -1,5 +1,11 @@
+<script setup>
+import LineTime from '../components/traceability/LineTime.vue';
+import TraceabilityVue from '../components/traceability/Traceability.vue';
+
+</script>
+
 <template>
-    <div>
-      <h2>Traceabily</h2>
-    </div>
+    <!-- <LineTime/> -->
+    <TraceabilityVue/>
+    
 </template>

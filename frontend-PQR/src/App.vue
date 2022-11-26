@@ -21,9 +21,12 @@ console.log(user_name.getUserName)
 // })
 
 
+
+
 </script>
 
 <template>
+  <!-- <LoginYeniVue/> -->
   <Navbar/>
   <RouterView />
 </template>

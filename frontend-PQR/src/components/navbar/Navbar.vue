@@ -170,4 +170,10 @@ const classComputed = () => {
   }
 
 } 
+
+/* hace que se señale la ruta donde esta el usuario */
+
+.router-link-exact-active {
+  color: #00c6ab !important;
+}
 </style>
