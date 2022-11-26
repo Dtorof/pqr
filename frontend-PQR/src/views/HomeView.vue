@@ -1,14 +1,27 @@
 <script setup>
 import Login from '../components/login/Login.vue'
 import Navbar from '../components/navbar/Navbar.vue'
+// import { onMounted } from 'vue'
+
+// const  router = useRouter();
+
+// onMounted(() => {
+//   if(localStorage.getItem("loguedUserName")){
+//      router.push('/administration')
+//   } else {
+//      router.push('/')
+//   }
+// })
 
 
 </script>
 <template>
- <div class="container-main">
+<div>
+<div class="container-main">
     <img  class="container-main__img" src="https://preview.colorlib.com/theme/bootstrap/login-form-07/images/undraw_remotely_2j6y.svg" alt="imagen home" srcset="">
     <Login class="w-50"/>
  </div>
+</div>
 </template>
 <style scoped>
 @import '../assets/base.css';
