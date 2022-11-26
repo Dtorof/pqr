@@ -10,8 +10,8 @@ export const useAuthenticationStore = defineStore('AuthenticationStore', {
     }),
     getters: {
        getUserName: (state) =>  state.user_name,
-       getTokenAuthen : (state) =>  state.token_authen,
-       getUserAuthen : (state) =>  state.user_authen,
+       getTokenAuthen : (state) => state.token_authen,
+       getUserAuthen : (state) => state.user_authen,
        getUserId : (state) =>  state.user_id,
     },
     actions: {

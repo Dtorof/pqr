@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router';
+import { useRouter , useRoute} from 'vue-router';
 import { useAuthenticationStore } from '../../stores/authentication';
 
 
@@ -13,7 +13,11 @@ const user_id = useAuthenticationStore();
 // console.log( user_authen.getUserId)
 // console.log(user_authen)
 
-const router = useRouter()
+const router = useRouter();
+const route = useRoute();
+// console.log(route, router)
+console.log(route.path)
+
 let sessionUser =  ref("")
 
 onMounted(() => {
@@ -29,9 +33,12 @@ const logout = () => {
   localStorage.removeItem("loguedUserId")
   router.push('/')
 }
+const classComputed = () => {
+
+}
 </script>
 <template>
- <nav class="navbar navbar-expand-sm">
+ <nav class="navbar navbar-expand-sm" :class="classComputed">
    <div class="container-fluid">
     <a class="navbar-brand logo" href="javascript:void(0)">PQR Management</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -40,28 +47,28 @@ const logout = () => {
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">  
         <li class="nav-item">
-          <RouterLink to="/user" class="nav-link text-white" href="#">Crear usuario</RouterLink>
+          <RouterLink to="/user" class="nav-link text-white  active" href="#">Crear usuario</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/customer" class="nav-link text-white" href="#">Crear Cliente</RouterLink>
+          <RouterLink to="/customer" class="nav-link text-white  active" href="#">Crear Cliente</RouterLink>
         </li>     
         <li class="nav-item">
-          <RouterLink to="/category" class="nav-link text-white" href="#">Crear Categoria</RouterLink>
+          <RouterLink to="/category" class="nav-link text-white  active" href="#">Crear Categoria</RouterLink>
         </li> 
         <li class="nav-item">
-          <RouterLink to="/traceabily" class="nav-link text-white" href="#">Trazabilidad</RouterLink>
+          <RouterLink to="/traceabily" class="nav-link text-white  active" href="#">Trazabilidad</RouterLink>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">PQR</a>
+          <a class="nav-link dropdown-toggle text-white  active" href="#" role="button" data-bs-toggle="dropdown">PQR</a>
           <ul class="dropdown-menu">
             <li class="nav-item">
-              <RouterLink to="/crearPQR" class="nav-link text-white" href="#">Crear PQR </RouterLink>
+              <RouterLink to="/crearPQR" class="nav-link text-white active" href="#">Crear PQR </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/typePQR" class="nav-link text-white" href="#">Crear Tipo PQR</RouterLink>
+              <RouterLink to="/typePQR" class="nav-link text-white active" href="#">Crear Tipo PQR</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/responsePQR" class="nav-link text-white" href="#">Responder PQR</RouterLink>
+              <RouterLink to="/responsePQR" class="nav-link text-white active" href="#">Responder PQR</RouterLink>
             </li>
           </ul>
         </li>

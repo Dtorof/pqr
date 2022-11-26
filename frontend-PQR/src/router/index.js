@@ -19,13 +19,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/administration',
+      path: '/administration/',
       name: 'administration',
       component: () => import('../views/AdministrationView.vue'),
-      // children:[
-    
-      //        ],
-
     },
     {
       path: "/crearPQR",
@@ -36,38 +32,38 @@ const router = createRouter({
     {
       path: "/user",
       name: "user",
-      component: UserView 
-      // component: () => import("../components/users/User.vue")
+      // component: UserView 
+      component: () => import("../components/users/User.vue")
     },
     {
       path: "/customer",
       name: "customer",
-      component: CustomersView
-      // component: () => import("../components/customers/Customer.vue")
+      // component: CustomersView
+      component: () => import("../components/customers/Customer.vue")
     },
     {
       path: "/typePQR",
       name: "typePQR",
-      component: TypePQRView
-      // component: () => import("../components/category_pqr/Category.vue")
+      // component: TypePQRView
+      component: () => import("../components/category_pqr/Category.vue")
     },
     {
       path: "/category",
       name: "category",
-      component: CategoryView
-      // component: () => import("../components/category_pqr/Category.vue")
+      // component: CategoryView
+      component: () => import("../components/category_pqr/Category.vue")
     },
     {
       path: "/responsePQR",
       name: "responsePQR",
-      component: ResponsePQRView
-      // component: () => import("../components/response_pqr/Response.vue")
+      // component: ResponsePQRView
+      component: () => import("../components/response_pqr/Response.vue")
     },
     {
       path: "/traceabily",
       name: "traceabily",
-      component: TraceabilyView
-      // component: () => import("../views/TraceabilyView.vue")
+      // component: TraceabilyView
+      component: () => import("../views/TraceabilyView.vue")
     },
     {
       path: "/:pathMatch(.*)*",
@@ -75,6 +71,7 @@ const router = createRouter({
       component: () => import("../NotFoundView.vue"),
    },
   ]
+  
 })
 
 export default router

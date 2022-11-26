@@ -68,6 +68,11 @@ const clear=() =>{
    formLogin.password = '';
 }
 
+window.addEventListener("unhandledrejection", (event) => {
+  console.warn(`Ahora SI: UNHANDLED PROMISE REJECTION: ${event.reason}`);
+  console.info("Ahora si anda");
+  event.preventDefault();
+})
 
 const LoginData = async () => {
   const formData = new FormData();
