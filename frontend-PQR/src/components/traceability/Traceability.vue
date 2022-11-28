@@ -34,14 +34,14 @@ const idUrl = ref("");
 
 
 const dataPqrs = async () => {
-  const urlData = `https://pqr-production.up.railway.app/api/v1/pqr-users/${user_id.getUserId}`;
+  const urlData = `https://pqrs01-production.up.railway.app/api/v1/pqr-users/${user_id.getUserId}`;
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
 console.log(urlData)
 };
 const dataEstatusPqrs = async () => {
-  const urlData = `https://pqr-production.up.railway.app/api/v1/traceability/${idUrl.value}`;
+  const urlData = `https://pqrs01-production.up.railway.app/api/v1/traceability/${idUrl.value}`;
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
