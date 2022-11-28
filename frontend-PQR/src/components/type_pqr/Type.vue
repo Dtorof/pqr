@@ -9,7 +9,6 @@ let type_PQR = reactive({
   name: ""
 }); 
 
-
 const rules = computed (() =>{
   return {  
     name: {
@@ -54,7 +53,7 @@ const RegistrationType_PQR = async () => {
   const formData = new FormData();
   formData.append("name", type_PQR.name);
  
-  const urlDB = `https://pqr-production.up.railway.app/api/v1/pqr-type`;
+  const urlDB = `https://pqrs01-production.up.railway.app/api/v1/pqr-type`;
   await fetch(urlDB, {
     method: "POST",
     body: formData,
@@ -79,13 +78,49 @@ const clear=() =>{
 }
 </script>
 <template>
-     <form class="container my-5" @submit.prevent="submitForm()">
-      <h2>Crear Tipo de PQR</h2>
+     <form class="container my-5 form px-5 py-3" @submit.prevent="submitForm()">
+      <h2  class="title mb-3 pb-3">Crear Tipo de PQR</h2>
       <div class="mb-3">
         <label for="disabledTextInput" class="form-label">Tipo PQR</label>
         <input type="text" id="disabledTextInput" class="form-control" placeholder="Ingrese el tipo de PQR" v-model="type_PQR.name">
         <span v-for="error in v$.name.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
       </div>
-      <button type="submit" class="btn btn-primary">Guardar</button>
+      <button type="submit" class="btn py-2 my-2">Guardar</button>
     </form>
 </template>
+<style scoped>
+.form{
+  width: 50%;
+  justify-content: center;
+  opacity: 0.8;
+  border-radius: 30px;
+  background: rgba(37,219,148,0.7);
+  /* -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px); */
+  border: 1px solid rgba(37,219,148,0.35);
+}
+.form-control{
+  border-color: #00c6ab;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  border-radius: 10px;
+  width: 100%;
+}
+.form-label{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  margin-left: 2%;
+}
+.btn{
+  width:99% ;
+  height: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #223026;
+  font-weight: 600;
+}
+.btn:hover{
+  background-color: #68da3e;
+  color: #fff;
+}
+</style>

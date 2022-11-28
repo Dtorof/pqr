@@ -142,12 +142,9 @@ const watchComponents2 = () => {
       container
       justify-content-center
       text-center
-      
       p-3
       mb-5
       mt-5
-      
-      
     "
   >
   <form class="px-5 py-3" @submit.prevent="sendValidations()">

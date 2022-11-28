@@ -10,7 +10,7 @@ const formCategory = reactive({
   name: "",
 }); 
 const getTypes_PQR = () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/pqr-type"
+  const urlData = "https://pqrs01-production.up.railway.app/api/v1/pqr-type"
       fetch(urlData)
       .then(resp => resp.json())
       .then(data => types_PQR.value= data)
@@ -70,7 +70,7 @@ const RegistrationCategory = async () => {
   formData.append("type_pqr_id", formCategory.type);
   formData.append("name", formCategory.name);
     
-  const urlDB = `https://pqr-production.up.railway.app/api/v1/pqr-category`;
+  const urlDB = `https://pqrs01-production.up.railway.app/api/v1/pqr-category`;
   await fetch(urlDB, {
     method: "POST",
     body: formData,
@@ -96,9 +96,8 @@ const clear=() =>{
 }
 </script>
 <template>
-    <!-- {{categorys.value[0].pqrType.name}} -->
-    <form class="container my-5" @submit.prevent="submitForm()">
-        <h2>Crear Categoria </h2>
+    <form class="container my-5 form px-5 py-3" @submit.prevent="submitForm()">
+        <h2 class="title mb-3 pb-3">Crear Categoria </h2>
     <div class="mb-3">
       <label for="disabledSelect" class="form-label">Tipo PQR</label>
       <select id="disabledSelect" class="form-select" v-model="formCategory.type">
@@ -112,6 +111,42 @@ const clear=() =>{
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Ingrese el nombre del servicio" v-model="formCategory.name">
       <span v-for="error in v$.name.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
     </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn py-2 my-2">Guardar</button>
     </form>
 </template>
+<style scoped>
+.form{
+  width: 50%;
+  justify-content: center;
+  opacity: 0.8;
+  border-radius: 30px;
+  background: rgba(37,219,148,0.7);
+  /* -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px); */
+  border: 1px solid rgba(37,219,148,0.35);
+}
+.form-control{
+  border-color: #00c6ab;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  border-radius: 10px;
+  width: 100%;
+}
+.form-label{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  margin-left: 2%;
+}
+.btn{
+  width:99% ;
+  height: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #223026;
+  font-weight: 600;
+}
+.btn:hover{
+  background-color: #68da3e;
+  color: #fff;
+}
+</style>

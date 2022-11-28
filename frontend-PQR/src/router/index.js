@@ -5,7 +5,7 @@ import UserView from '../views/UserView.vue'
 import CustomersView from '../views/CustomersView.vue'
 import CategoryView from '../views/CategoryView.vue'
 import ResponsePQRView from '../views/ResponsePQRView.vue'
-import TraceabilyView from '../views/TraceabilyView.vue'
+// import TraceabilyView from '../views/TraceabilyView.vue'
 import TypePQRView from '../views/TypePQRView.vue'
 import PqrView from '../views/PqrView.vue'
 
@@ -32,32 +32,32 @@ const router = createRouter({
     {
       path: "/user",
       name: "user",
-      // component: UserView 
-      component: () => import("../components/users/User.vue")
+      component: UserView 
+      // component: () => import("../components/users/User.vue")
     },
     {
       path: "/customer",
       name: "customer",
-      // component: CustomersView
-      component: () => import("../components/customers/Customer.vue")
+      component: CustomersView
+      // component: () => import("../components/customers/Customer.vue")
     },
     {
       path: "/typePQR",
       name: "typePQR",
-      // component: TypePQRView
-      component: () => import("../components/category_pqr/Category.vue")
+      component: TypePQRView
+      // component: () => import("../components/category_pqr/Category.vue")
     },
     {
       path: "/category",
       name: "category",
-      // component: CategoryView
-      component: () => import("../components/category_pqr/Category.vue")
+      component: CategoryView
+      // component: () => import("../components/category_pqr/Category.vue")
     },
     {
       path: "/responsePQR",
       name: "responsePQR",
-      // component: ResponsePQRView
-      component: () => import("../components/response_pqr/Response.vue")
+      component: ResponsePQRView
+      // component: () => import("../components/response_pqr/Response.vue")
     },
     {
       path: "/traceabily",
