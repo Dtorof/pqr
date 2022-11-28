@@ -36,7 +36,6 @@ const getCustomer = async() => {
 }
 
 onMounted(() => {
-  // console.log("state.customers...🎄",customers)
   getTypePQR();
   getCustomer();
 })
