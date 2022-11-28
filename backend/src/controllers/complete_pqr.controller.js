@@ -6,10 +6,7 @@ export const editRegister = async (req,res) => {
     const { id } = req.params
     try {
 
-        const {  status } = req.body
-        if(status !== "Finalizado") {
-            return res.status(500).json({ message: "El status debe ser igual a 'Finalizado' "})
-        }
+       
         const today = new Date()
     
         let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
