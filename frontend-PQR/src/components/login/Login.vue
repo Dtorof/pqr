@@ -80,7 +80,7 @@ const LoginData = async () => {
   formData.append("password", formLogin.password);
   
 // console.log(formData)
-  const urlDB = `https://pqr-production.up.railway.app/api/v1/auth/login`;
+  const urlDB = `https://pqrs01-production.up.railway.app/api/v1/auth/login`;
   await fetch(urlDB, {
     method: "POST",
     body: formData,
