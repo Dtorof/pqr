@@ -47,13 +47,13 @@ const classComputed = () => {
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">  
         <li class="nav-item">
-          <RouterLink to="/user" class="nav-link text-white  active" href="#">Crear usuario</RouterLink>
+          <RouterLink to="/user" class="nav-link text-white  active" href="#">Usuarios</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/customer" class="nav-link text-white  active" href="#">Crear Cliente</RouterLink>
+          <RouterLink to="/customer" class="nav-link text-white  active" href="#">Clientes</RouterLink>
         </li>     
         <li class="nav-item">
-          <RouterLink to="/category" class="nav-link text-white  active" href="#">Crear Categoria</RouterLink>
+          <RouterLink to="/category" class="nav-link text-white  active" href="#">Crear Categorias</RouterLink>
         </li> 
         <li class="nav-item">
           <RouterLink to="/traceabily" class="nav-link text-white  active" href="#">Trazabilidad</RouterLink>
@@ -62,13 +62,13 @@ const classComputed = () => {
           <a class="nav-link dropdown-toggle text-white  active" href="#" role="button" data-bs-toggle="dropdown">PQR</a>
           <ul class="dropdown-menu">
             <li class="nav-item">
-              <RouterLink to="/crearPQR" class="nav-link text-white active" href="#">Crear PQR </RouterLink>
+              <RouterLink to="/crearPQR" class="nav-link text-white active" href="#">Crear PQRS </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/typePQR" class="nav-link text-white active" href="#">Crear Tipo PQR</RouterLink>
+              <RouterLink to="/typePQR" class="nav-link text-white active" href="#">Crear Tipo PQRS</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/responsePQR" class="nav-link text-white active" href="#">Responder PQR</RouterLink>
+              <RouterLink to="/responsePQR" class="nav-link text-white active" href="#">Responder PQRS</RouterLink>
             </li>
           </ul>
         </li>
