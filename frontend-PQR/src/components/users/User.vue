@@ -57,7 +57,7 @@ const sendData = async () => {
   formData.append("document", state.document);
   formData.append("password", state.password);
 
-  const urlDB = `https://pqr-production.up.railway.app/api/v1/user`;
+  const urlDB = `https://pqrs01-production.up.railway.app/api/v1/user`;
   
   await fetch(urlDB, {
     method: "POST",
@@ -90,7 +90,7 @@ const messageError = ( text,) => {
 };
 
 const dataUser = async () => {
-  const urlData = "https://pqr-production.up.railway.app/api/v1/user";
+  const urlData = "https://pqrs01-production.up.railway.app/api/v1/user";
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (user.value = data));

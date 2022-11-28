@@ -12,14 +12,16 @@ const {pqrsPinia} = storeToRefs(dataPinea);
 
 const pqrs = ref([]);
 
+const pqrsFilter = ref([]);
+
 const dataPqrs = async () => {
-  const urlData = `https://pqr-production.up.railway.app/api/v1/register-pqr/${user_id.getUserId}`;
+  const urlData = `https://pqrs01-production.up.railway.app/api/v1/register-pqr/${user_id.getUserId}`;
   await fetch(urlData)
     .then((resp) => resp.json())
     .then((data) => (pqrs.value = data));
     console.log(pqrs.value);
 
-    //asigne la data a la variable de
+    // pqrsFilter.value = pqrs.value.filter(prqr => pqrs.status === "Proceso")
 
    
   
