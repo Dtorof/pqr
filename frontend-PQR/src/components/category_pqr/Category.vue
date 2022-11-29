@@ -97,11 +97,11 @@ const clear=() =>{
 </script>
 <template>
     <form class="container my-5 form px-5 py-3" @submit.prevent="submitForm()">
-        <h2 class="title mb-3 pb-3">Crear Categoria </h2>
+        <h2 class="title mb-3 py-3 text-center">Crear Categoria </h2>
     <div class="mb-3">
       <label for="disabledSelect" class="form-label">Tipo PQR</label>
       <select id="disabledSelect" class="form-select" v-model="formCategory.type">
-        <option>Seleccione el tipo de PQR</option>
+        <!-- <option value="Seleccione el tipo de PQR" selected>Seleccione el tipo de PQR</option> -->
          <option v-for="(item,i) in types_PQR.value" :value="item.id" v-text="item.name" :key="i"></option>
       </select>
         <span v-for="error in v$.type.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
@@ -111,7 +111,7 @@ const clear=() =>{
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Ingrese el nombre del servicio" v-model="formCategory.name">
       <span v-for="error in v$.name.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
     </div>
-    <button type="submit" class="btn btn py-2 my-2">Guardar</button>
+    <button type="submit" class="btn py-2 mt-2 mb-3">Guardar</button>
     </form>
 </template>
 <style scoped>

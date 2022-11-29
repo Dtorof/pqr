@@ -38,22 +38,22 @@ const classComputed = () => {
 }
 </script>
 <template>
- <nav class="navbar navbar-expand-sm" :class="classComputed">
+ <nav v-if="user_name.getUserName" class="navbar navbar-expand-sm" :class="classComputed">
    <div class="container-fluid">
-    <a class="navbar-brand logo" href="javascript:void(0)">PQR Management</a>
+    <RouterLink  to="/administration" class="navbar-brand logo" href="javascript:void(0)">PQR Management</RouterLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">  
         <li class="nav-item">
-          <RouterLink to="/user" class="nav-link text-white  active" href="#">Crear usuario</RouterLink>
+          <RouterLink to="/user" class="nav-link text-white  active" href="#">Usuario</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/customer" class="nav-link text-white  active" href="#">Crear Cliente</RouterLink>
+          <RouterLink to="/customer" class="nav-link text-white  active" href="#">Cliente</RouterLink>
         </li>     
         <li class="nav-item">
-          <RouterLink to="/category" class="nav-link text-white  active" href="#">Crear Categoria</RouterLink>
+          <RouterLink to="/category" class="nav-link text-white  active" href="#">Categoria</RouterLink>
         </li> 
         <li class="nav-item">
           <RouterLink to="/traceabily" class="nav-link text-white  active" href="#">Trazabilidad</RouterLink>
@@ -87,13 +87,15 @@ const classComputed = () => {
     </div>
   </div>
 </nav>
+<nav v-else>
+</nav>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Rubik+Dirt&display=swap');
 
 .logo {
     font-family: 'Courgette', cursive;
-    font-size: 32px;
+    font-size: 1.6rem;
     color: white;
     font-weight: bolder;
 }
@@ -115,19 +117,11 @@ const classComputed = () => {
     font-size: 2rem;
     color: white;
   }
- 
- 
-/* .avatar-icon {
-  width: 100%;
-  border-radius: 50%;
-  background: #416864;
-}
-.img-avatar {
-  width: 30%;
-} */
+
 .avatar{
   display: flex;
   flex-direction: column;
+  margin: 0 4%;
 }
 @media (min-width: 481px) {
   .nav-link {
@@ -135,20 +129,32 @@ const classComputed = () => {
     margin: 2px 28px;
     font-size: 0.8rem;
   }
+  .avatar, .logo{
+   margin: 0 7%;
+}
+
 }
 @media (min-width: 576px) {
-  .navbar-collapse {
+
+   .navbar-collapse {
     flex-grow: 0;
-    align-items: flex-end;
   }
   .nav-link {
     width: 100%;
     margin: 2px 0px;
     font-size: 0.7rem;
   }
+ 
+   .logo {
+    font-size: 1.4rem;
+    margin: 0 4%;
+  }
+  .avatar{
+  margin: 0;
+  }
   .navbar-expand-sm {
     flex-wrap: nowrap;
-    /* justify-content: flex-start; */
+    width: 670px;
   }
 }
 @media (min-width: 768px) {
@@ -161,6 +167,16 @@ const classComputed = () => {
     margin: 5px 1px;
     font-size: 1.2rem;
   }
+  .navbar-expand-sm {
+    width: 856px
+  }
+  
+}
+@media (min-width: 995px) {
+
+  .navbar-expand-sm {
+      width: 998px;
+  } 
 }
 @media (min-width: 1023px) {
   .nav-link {
@@ -168,9 +184,23 @@ const classComputed = () => {
     margin: 5px 10px;
     font-size: 1.4rem;
   }
-
-} 
-
+  .logo {
+    font-size: 2rem;
+  }
+  .navbar-expand-sm {
+      width: 1025px;
+  } 
+}
+@media (min-width: 1153px) {
+  .navbar-expand-sm {
+      width: 1160px;
+  } 
+}
+@media (min-width: 1201px) {
+  .navbar-expand-sm {
+      width: 1350px;
+  } 
+}
 /* hace que se señale la ruta donde esta el usuario */
 
 .router-link-exact-active {

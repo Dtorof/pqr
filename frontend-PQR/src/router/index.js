@@ -19,7 +19,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/administration/',
+      path: '/administration',
       name: 'administration',
       component: () => import('../views/AdministrationView.vue'),
     },
