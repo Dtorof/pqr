@@ -95,7 +95,7 @@ const LoginData = async () => {
           "¡Bienvenido!",
           1500
         );
-        router.push('/administration')
+        router.push("/administration")
       } else {
         messageError("registrarse, por favor...");
       }
@@ -119,7 +119,13 @@ const LoginData = async () => {
 
 </script>
 <template>
-   <div>
+  <div class="row">
+    <div class="col imagen" >
+      <img  class="container-main__img" src="https://preview.colorlib.com/theme/bootstrap/login-form-07/images/undraw_remotely_2j6y.svg" alt="imagen home" srcset="">
+
+    </div>
+
+    <div class="col">
       <form class="form" @submit.prevent="submitForm()">
         <h2 class="form-title my-3">Inicio de Sesión</h2>
         <div class="mb-3">
@@ -135,6 +141,9 @@ const LoginData = async () => {
         <button type="submit" class="btn">Ingresar</button>
       </form>
     </div>
+  </div>
+ 
+    <!-- <RouterView /> -->
 </template>
 <style scoped>
 @import '../../assets/base.css';
@@ -156,5 +165,10 @@ input {
   /* background-color: var(--color-text); */
   background-color: #6c63ff;
   color: white;
+}
+.imagen img{
+  width: 100%;
+  height: 80%;
+  margin-top: 5%;
 }
 </style>

@@ -40,20 +40,20 @@ const classComputed = () => {
 <template>
  <nav class="navbar navbar-expand-sm" :class="classComputed">
    <div class="container-fluid">
-    <a class="navbar-brand logo" href="javascript:void(0)">PQR Management</a>
+    <RouterLink to="/administration" class="navbar-brand logo" href="javascript:void(0)">PQR Management</RouterLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">  
         <li class="nav-item">
-          <RouterLink to="/user" class="nav-link text-white  active" href="#">Crear usuario</RouterLink>
+          <RouterLink to="/user" class="nav-link text-white  active" href="#">Usuarios</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/customer" class="nav-link text-white  active" href="#">Crear Cliente</RouterLink>
+          <RouterLink to="/customer" class="nav-link text-white  active" href="#">Clientes</RouterLink>
         </li>     
         <li class="nav-item">
-          <RouterLink to="/category" class="nav-link text-white  active" href="#">Crear Categoria</RouterLink>
+          <RouterLink to="/category" class="nav-link text-white  active" href="#">Crear Categorias</RouterLink>
         </li> 
         <li class="nav-item">
           <RouterLink to="/traceabily" class="nav-link text-white  active" href="#">Trazabilidad</RouterLink>
@@ -62,13 +62,13 @@ const classComputed = () => {
           <a class="nav-link dropdown-toggle text-white  active" href="#" role="button" data-bs-toggle="dropdown">PQR</a>
           <ul class="dropdown-menu">
             <li class="nav-item">
-              <RouterLink to="/crearPQR" class="nav-link text-white active" href="#">Crear PQR </RouterLink>
+              <RouterLink to="/crearPQR" class="nav-link text-white active" href="#">Crear PQRS </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/typePQR" class="nav-link text-white active" href="#">Crear Tipo PQR</RouterLink>
+              <RouterLink to="/typePQR" class="nav-link text-white active" href="#">Crear Tipo PQRS</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/responsePQR" class="nav-link text-white active" href="#">Responder PQR</RouterLink>
+              <RouterLink to="/responsePQR" class="nav-link text-white active" href="#">Responder PQRS</RouterLink>
             </li>
           </ul>
         </li>
@@ -87,6 +87,7 @@ const classComputed = () => {
     </div>
   </div>
 </nav>
+<RouterView />
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Rubik+Dirt&display=swap');

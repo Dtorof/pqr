@@ -69,7 +69,7 @@ const sendData = async () => {
   formData.append("user_id", user_id.value);
   formData.append("desc_solution", state.desc_solution);
 
-  const urlDB = `https://pqr-production.up.railway.app/api/v1/response-pqr`;
+  const urlDB = `https://pqrs01-production.up.railway.app/api/v1/response-pqr`;
   await fetch(urlDB, {
     method: "POST",
     body: formData,
@@ -86,10 +86,16 @@ const sendData = async () => {
         "Se ha respondido correctamente la pqr",
         1500
       );
+      
+
     })
+
     .catch((error) => {
       console.error("Error:", error);
     });
+
+    let closeModal = document.getElementById("close");
+      closeModal.click();
 };
 
 const messageCreate = (position, title, text, time) => {
@@ -126,7 +132,7 @@ const messageCreate = (position, title, text, time) => {
             ></button>
           </div>
           <div class="modal-body">
-            <H1>{{register_pqr_id}}</H1>
+            <!-- <H1>{{register_pqr_id}}</H1> -->
             <textarea
               v-model="state.desc_solution"
               :class="{ 'is-invalid': $v.desc_solution.$error }"
@@ -147,10 +153,11 @@ const messageCreate = (position, title, text, time) => {
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
+              id="close"
             >
-              Close
+              Cerrar
             </button>
-            <button type="submit" class="btn btn2">Save changes</button>
+            <button type="submit" class="btn btn2">Guardar</button>
           </div>
         </form>
       </div>

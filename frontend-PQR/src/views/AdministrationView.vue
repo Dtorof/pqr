@@ -7,13 +7,23 @@ import { useAuthenticationStore } from '../stores/authentication';
 const user_name = useAuthenticationStore(); 
 const token_authen = useAuthenticationStore(); 
 
+let URL = window.location;
+
+
+
 </script>
 <template>
-   <!-- <Navbar/> -->
-    <div class="container-main">
+
+
+   <Navbar/> 
+
+
+    <div v-if="URL.pathname =='/administration' "   class="container-main">
         <h2>Bienvenido <span>{{user_name.getUserName}}</span></h2>
         <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.slnsoftwares.com%2Fimages%2Fgif%2Fwebdevelopment10.gif&f=1&nofb=1&ipt=b13139b05e6ee422320b34cf1713cf1e31c4758181422de8a198787759858ada&ipo=images"/>
     </div>
+    <!-- <RouterView /> -->
+
 
 </template>
 <style scoped>
