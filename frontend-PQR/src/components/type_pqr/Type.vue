@@ -80,9 +80,9 @@ const clear=() =>{
 <template>
      <form class="container  form px-5 py-3" @submit.prevent="submitForm()">
       <h2  class="title mb-3 py-3 text-center">Crear Tipo de PQR</h2>
-      <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Tipo PQR</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Ingrese el tipo de PQR" v-model="type_PQR.name">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" v-model="type_PQR.name">
+        <label for="floatingInput">Tipo PQR</label>
         <span v-for="error in v$.name.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
       </div>
       <button type="submit" class="btn py-2 mt-3 mb-3">Guardar</button>

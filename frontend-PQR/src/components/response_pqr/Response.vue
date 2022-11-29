@@ -18,10 +18,14 @@ const dataPqrs = async () => {
   const urlData = `https://pqrs01-production.up.railway.app/api/v1/register-pqr/${user_id.getUserId}`;
   await fetch(urlData)
     .then((resp) => resp.json())
-    .then((data) => (pqrs.value = data));
-    console.log(pqrs.value);
+    .then((data) => pqrsFilter.value = data);
+   
+    pqrs.value = pqrsFilter.value.filter(
+      function(element){
+        return element.status=="En proceso"
+      }
+    )
 
-    // pqrsFilter.value = pqrs.value.filter(prqr => pqrs.status === "Proceso")
 
    
   
@@ -46,6 +50,9 @@ onMounted(() => {
   <div class="col m-5">
     <div class="row" id="tabla">
       <div class="container pe-4 ps-4">
+        <h1 class="text-muted titleT text-start">
+         Responder PQR
+        </h1>
         <div class="table-responsive">
           <table class="table">
             <thead class="table-header">
@@ -104,5 +111,13 @@ onMounted(() => {
   justify-content: center;
   text-align: center;
 }
-
+.titleP {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  /* text-decoration-style: double; */
+  text-decoration-color: var(--blue-purple);
+}
+.titleT {
+  margin-bottom: 2%;
+}
 </style>

@@ -189,7 +189,6 @@ const update = (name, id) => {
         <div class="mb-3">
             <label for="disabledSelect" class="form-label">Tipo PQR</label>
             <select id="disabledSelect" class="form-select" v-model="form.type">
-                <!-- <option selected>Seleccione el tipo de PQR</option> -->
                 <option v-for="(item,i) in types" :value="item.id" v-text="item.name" :key="i"></option>
             </select>
             <span v-for="error in v$.type.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
@@ -197,7 +196,6 @@ const update = (name, id) => {
         <div class="mb-3">
             <label for="disabledSelect" class="form-label">Categoria</label>
             <select id="disabledSelect" class="form-select"  v-model="form.category">
-              <!-- <option selected>Seleccione una categoria</option> -->
               <option v-for="(item,i) in filterCategories" :value="item.id" v-text="item.name" :key="i"></option>
             </select>
             <span v-for="error in v$.category.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>

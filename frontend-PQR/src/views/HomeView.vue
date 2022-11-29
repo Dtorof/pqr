@@ -1,17 +1,6 @@
 <script setup>
 import Login from '../components/login/Login.vue'
 import Navbar from '../components/navbar/Navbar.vue'
-// import { onMounted } from 'vue'
-
-// const  router = useRouter();
-
-// onMounted(() => {
-//   if(localStorage.getItem("loguedUserName")){
-//      router.push('/administration')
-//   } else {
-//      router.push('/')
-//   }
-// })
 
 
 </script>
