@@ -15,8 +15,7 @@ const user_id = useAuthenticationStore();
 
 const router = useRouter();
 const route = useRoute();
-// console.log(route, router)
-console.log(route.path)
+
 
 let sessionUser =  ref("")
 
@@ -53,7 +52,7 @@ const classComputed = () => {
           <RouterLink to="/customer" class="nav-link text-white  active" href="#">Clientes</RouterLink>
         </li>     
         <li class="nav-item">
-          <RouterLink to="/category" class="nav-link text-white  active" href="#">Crear Categorias</RouterLink>
+          <RouterLink to="/category" class="nav-link text-white  active" href="#">Categorias</RouterLink>
         </li> 
         <li class="nav-item">
           <RouterLink to="/traceabily" class="nav-link text-white  active" href="#">Trazabilidad</RouterLink>

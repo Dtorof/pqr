@@ -78,14 +78,14 @@ const clear=() =>{
 }
 </script>
 <template>
-     <form class="container my-5 form px-5 py-3" @submit.prevent="submitForm()">
-      <h2  class="title mb-3 pb-3">Crear Tipo de PQR</h2>
-      <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Tipo PQR</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Ingrese el tipo de PQR" v-model="type_PQR.name">
+     <form class="container  form px-5 py-3" @submit.prevent="submitForm()">
+      <h2  class="title mb-3 py-3 text-center">Crear Tipo de PQR</h2>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" v-model="type_PQR.name">
+        <label for="floatingInput">Tipo PQR</label>
         <span v-for="error in v$.name.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
       </div>
-      <button type="submit" class="btn py-2 my-2">Guardar</button>
+      <button type="submit" class="btn py-2 mt-3 mb-3">Guardar</button>
     </form>
 </template>
 <style scoped>
@@ -93,6 +93,7 @@ const clear=() =>{
   width: 50%;
   justify-content: center;
   opacity: 0.8;
+  margin-top: 8%;
   border-radius: 30px;
   background: rgba(37,219,148,0.7);
   /* -webkit-backdrop-filter: blur(7px);

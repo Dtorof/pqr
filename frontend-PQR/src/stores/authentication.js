@@ -42,5 +42,10 @@ export const useAuthenticationStore = defineStore('AuthenticationStore', {
         userId(userId) {
             return localStorage.setItem("loguedUserId", JSON.stringify(userId)); 
          },  
+         clear(){
+            this.user_name = "",
+            this.token_authen  = "",
+            this.user_id = ""
+         }
     }
 })
