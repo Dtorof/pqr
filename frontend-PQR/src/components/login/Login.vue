@@ -4,12 +4,22 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, maxLength, minValue, numeric,alpha, helpers } from '@vuelidate/validators'
 import {useRouter } from 'vue-router';
 import { useAuthenticationStore } from '../../stores/authentication';
+import { useData1 } from "@/stores/ensayo";
+import { storeToRefs } from "pinia";
 
 
+
+const dataPinea = useData1(); 
 const user_authen = useAuthenticationStore(); 
 const token_authen = useAuthenticationStore(); 
 const user_name = useAuthenticationStore();
 const user_id = useAuthenticationStore(); 
+
+const {viewLogin} = storeToRefs(dataPinea);
+
+let state = ref(false);
+
+
 
 const  router = useRouter();
 
@@ -96,10 +106,15 @@ const LoginData = async () => {
           1500
         );
         router.push("/administration")
+        viewLogin.value=true
+        state.value=true
+        localStorage.setItem("stateLocal", state.value);
+        stateLocal.value = JSON.parse(localStorage.getItem("stateLocal"));
       } else {
         messageError("registrarse, por favor...");
       }
       return response.json();
+      
     })
     .then((data) => {
       console.log(data)

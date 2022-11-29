@@ -26,15 +26,12 @@ const dataPqrs = async () => {
       }
     )
 
-
-   
-  
 };
 
 
 const sendData = (data) => {
   pqrsPinia.value=data
-  console.log(pqrsPinia.value)
+  // console.log(pqrsPinia.value.id)
 
 
 };
@@ -46,7 +43,9 @@ onMounted(() => {
 
 
 <template>
-  <ModalResponseVue />
+  <ModalResponseVue 
+  @dataPqrs="dataPqrs"
+  />
   <div class="col m-5">
     <div class="row" id="tabla">
       <div class="container pe-4 ps-4">

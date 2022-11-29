@@ -33,6 +33,11 @@ const logout = () => {
   localStorage.removeItem("loguedUserId")
   router.push('/')
 }
+
+const deleteUser =()  =>{
+  localStorage.removeItem('dataUser');
+}
+
 const classComputed = () => {
 
 }
@@ -79,7 +84,7 @@ const classComputed = () => {
           <span class="text-white">{{user_name.getUserName}}</span>
         </li>
         <li class="nav-item">
-          <RouterLink to="/" @click="logout" class="nav-link active" href="#">
+          <RouterLink to="/" @click="logout,deleteUser" class="nav-link active" href="#">
             <i class="fa-solid fa-right-from-bracket icon"></i>
           </RouterLink>
         </li>

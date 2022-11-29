@@ -4,16 +4,20 @@ import { useData1 } from "@/stores/ensayo";
 import { storeToRefs } from "pinia";
 import { useVuelidate } from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import { useAuthenticationStore } from "@/stores/authentication";
 
 const dataPinea = useData1(); //no olvidar los parentisis
+const user_id = useAuthenticationStore();
+
 
 const { pqrsPinia } = storeToRefs(dataPinea);
 
+const pqrsFilter = ref([]);
 
 const data = () => {
-  console.log("yenifer", pqrsPinia.value);
-  console.log("ortiz", pqrsPinia.value.customer.names);
-  console.log(register_pqr_id.value)
+  console.log("yenifer", user_id.getUserId);
+  console.log("ortiz", pqrsPinia.value.id);
+
 };
 // {
 //     "register_pqr_id": "157ae882-656b-4427-86d4-e1ccad2b879d",
@@ -21,8 +25,8 @@ const data = () => {
 //     "desc_solution": "Response"
 // }
 
-const register_pqr_id = ref(pqrsPinia.value.id);  //id
-const user_id = ref("3");
+// const register_pqr_id = ref(pqrsPinia.value.id);  //id
+// const user_id = ref("");
 
 
 const confirmar = ref([])
@@ -49,6 +53,7 @@ const messageError = (text) => {
   });
 };
 
+
 const clear = () => {
   $v.value.$reset(); // ayuda a que no este todo en rojo
   state.desc_solution = "";
@@ -64,11 +69,14 @@ const sendValidations = async () => {
 };
 
 const sendData = async () => {
+  console.log("diego",pqrsPinia.value.id)
+  console.log("diego",user_id.getUserId)
   const formData = new FormData();
-  formData.append("register_pqr_id", register_pqr_id.value);
-  formData.append("user_id", user_id.value);
+  formData.append("register_pqr_id", pqrsPinia.value.id);
+  formData.append("user_id",  user_id.getUserId);
   formData.append("desc_solution", state.desc_solution);
 
+  console.log(pqrsPinia.value.id)
   const urlDB = `https://pqrs01-production.up.railway.app/api/v1/response-pqr`;
   await fetch(urlDB, {
     method: "POST",
@@ -78,7 +86,6 @@ const sendData = async () => {
 
     .then((response) => {
       user_id.value = response
-      console.log("yenifer",user_id.value)
       clear();
       messageCreate(
         "center",
@@ -86,16 +93,18 @@ const sendData = async () => {
         "Se ha respondido correctamente la pqr",
         1500
       );
-      
+      let closeModal = document.getElementById("close");
+      closeModal.click();
 
+    location. reload()
     })
-
     .catch((error) => {
       console.error("Error:", error);
     });
 
-    let closeModal = document.getElementById("close");
-      closeModal.click();
+  
+
+   
 };
 
 const messageCreate = (position, title, text, time) => {
@@ -108,6 +117,10 @@ const messageCreate = (position, title, text, time) => {
     timer: time,
   });
 };
+
+// onMounted(() => {
+//   data();
+// });
 
 // console.log(data1.value)
 </script>
@@ -157,7 +170,7 @@ const messageCreate = (position, title, text, time) => {
             >
               Cerrar
             </button>
-            <button type="submit" class="btn btn2">Guardar</button>
+            <button type="submit"   class="btn btn2">Guardar</button>
           </div>
         </form>
       </div>
