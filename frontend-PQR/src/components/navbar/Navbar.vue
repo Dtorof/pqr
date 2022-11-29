@@ -40,7 +40,7 @@ const classComputed = () => {
 <template>
  <nav class="navbar navbar-expand-sm" :class="classComputed">
    <div class="container-fluid">
-    <a class="navbar-brand logo" href="javascript:void(0)">PQR Management</a>
+    <RouterLink to="/administration" class="navbar-brand logo" href="javascript:void(0)">PQR Management</RouterLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -87,6 +87,7 @@ const classComputed = () => {
     </div>
   </div>
 </nav>
+<RouterView />
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Rubik+Dirt&display=swap');

@@ -21,105 +21,7 @@ const getTypePQR = () => {
       console.log("types",types)
 }
 
-let  customers = reactive([
-    {
-        "id": 1,
-        "names": "Jhon",
-        "document": "2363213258",
-        "email": "jhondoe@correo.com",
-        "surnames": "Doe",
-        "fullName": "Jhon Doe",
-        "dateOfBirth": "1998-10-24",
-        "age": "24",
-        "address": "214 street Pontifician Av.",
-        "phone": "3195861268",
-        "createdAt": "2022-11-17T13:36:16.000Z",
-        "updatedAt": "2022-11-17T13:36:16.000Z"
-    },
-    {
-        "id": 2,
-        "names": "Dev",
-        "document": "458349590",
-        "email": "envioshseq@gmail.com",
-        "surnames": "Torvald",
-        "fullName": "Dev Torvald",
-        "dateOfBirth": "2001-10-17",
-        "age": "21",
-        "address": "356 street 5 Av.",
-        "phone": "75060337",
-        "createdAt": "2022-11-17T14:42:46.000Z",
-        "updatedAt": "2022-11-17T14:42:46.000Z"
-    },
-     {
-        "id": 3,
-        "names": "Ana",
-        "document": "458349590",
-        "email": "ana@gmail.com",
-        "surnames": "Anad",
-        "fullName": "Ana Torvald",
-        "dateOfBirth": "2001-10-17",
-        "age": "51",
-        "address": "35 street 5 Av.",
-        "phone": "3055666",
-        "createdAt": "2022-11-17T14:42:46.000Z",
-        "updatedAt": "2022-11-17T14:42:46.000Z"
-    },  {
-        "id": 4,
-        "names": "Juan",
-        "document": "45654478",
-        "email": "juan@gmail.com",
-        "surnames": "Juannk",
-        "fullName": "Juan Torvald",
-        "dateOfBirth": "2001-10-17",
-        "age": "11",
-        "address": "35 street 5 Av.",
-        "phone": "3055666",
-        "createdAt": "2022-11-17T14:42:46.000Z",
-        "updatedAt": "2022-11-17T14:42:46.000Z"
-    },
-    {
-        "id": 5,
-        "names": "Maria",
-        "document": "15552478",
-        "email": "maria@gmail.com",
-        "surnames": "mari",
-        "fullName": "mari Torvald",
-        "dateOfBirth": "2001-10-17",
-        "age": "28",
-        "address": "35 street 5 Av.",
-        "phone": "3055666",
-        "createdAt": "2022-11-17T14:42:46.000Z",
-        "updatedAt": "2022-11-17T14:42:46.000Z"
-    },
-     {
-        "id": 6,
-        "names": "Marcela",
-        "document": "47889590",
-        "email": "marcela@gmail.com",
-        "surnames": "Marcela d",
-        "fullName": "Marcela Torvald",
-        "dateOfBirth": "2001-10-17",
-        "age": "41",
-        "address": "35 street 5 Av.",
-        "phone": "3055666",
-        "createdAt": "2022-11-17T14:42:46.000Z",
-        "updatedAt": "2022-11-17T14:42:46.000Z"
-    }, 
-     {
-        "id": 3,
-        "names": "Maritza",
-        "document": "458349590",
-        "email": "Maritza@gmail.com",
-        "surnames": "Maritza d",
-        "fullName": "Maritza Torvald",
-        "dateOfBirth": "2001-10-17",
-        "age": "51",
-        "address": "35 street 5 Av.",
-        "phone": "3055666",
-        "createdAt": "2022-11-17T14:42:46.000Z",
-        "updatedAt": "2022-11-17T14:42:46.000Z"
-    }, 
-]);
+let  customers = reactive([]);
 
 const getCustomer = async() => {
   const urlBD = "https://pqrs01-production.up.railway.app/api/v1/customer"
@@ -133,14 +35,13 @@ const getCustomer = async() => {
   }
 }
 
-// onMounted(() => {
-//   console.log("state.customers...🎄",customers)
-//   getTypePQR();
-//   getCustomer();
-// })
+onMounted(() => {
+  getTypePQR();
+  getCustomer();
+})
 
 onUpdated(() => {
-  // getCategorys();
+  getCategorys();
 })
 console.log(formCreatePQR)
 
@@ -213,17 +114,17 @@ const messageError = ( text) => {
   });
 };
 const RegistrationCreatePQR = async () => {
-    let createPQR = {
-        client_id: formCreatePQR.client,
-        user_id: formCreatePQR.type,
-        pqr_category_id: formCreatePQR.category,
-        description: formCreatePQR.description
-    } 
- console.log(createPQR)
-  const urlDB = `https://pqrs01-production.up.railway.app/api/v1/pqr-category`;
+  const formData = new FormData();
+  formData.append("client_id", formCreatePQR.client);
+  formData.append("user_id", formCreatePQR.type);
+  formData.append("pqr_category_id", formCreatePQR.category);
+  formData.append("description", formCreatePQR.description);
+
+ console.log(formData)
+  const urlDB = `https://pqrs01-production.up.railway.app/api/v1/register-pqr`;
   await fetch(urlDB, {
     method: "POST",
-    body: JSON.stringify(createPQR),
+    body: formData,
   })
     .then((response) => {
       console.log(response)
@@ -251,6 +152,7 @@ const update = (name, id) => {
   formCreatePQR.client = id;
   console.log(formCreatePQR.client)
 }
+
 </script>
 <template>
     <form class="container my-5 form  px-5 py-3" @submit.prevent="submitForm()">
@@ -258,7 +160,7 @@ const update = (name, id) => {
         <div class="mb-3">
             <label for="disabledTextInput" class="form-label">Cliente</label>
             <input type="text" id="disabledTextInput" class="form-control" placeholder="Nombre del cliente"  v-model="formCreatePQR.client">
-            <!-- <span v-for="error in v$.client.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span> -->
+            <span v-for="error in v$.client.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
         </div>
          <div v-for="(item, i) in filterCustomers" :key="i">
           <div @click="update(item.name, item.id)" :value="item.name">{{item.names}}</div>
@@ -282,10 +184,10 @@ const update = (name, id) => {
         
         <div class="mb-3">
         <label for="disabledTextInput" class="form-label">Descripción</label>
-        <textarea name="message" rows="10" cols="30" class="form-control" placeholder="Ingrese una descripción" v-model="formCreatePQR.description">
+        <!-- <textarea name="message" rows="10" cols="30" class="form-control" placeholder="Ingrese una descripción" v-model="formCreatePQR.description">
          
-        </textarea>
-        <span v-for="error in v$.description.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span>
+        </textarea> -->
+        <!-- <span v-for="error in v$.description.$errors" .key="error.$uid" style="color: red;">{{error.$message}}</span> -->
         </div>
         <button type="submit" class="btn py-2 my-2">Guardar</button>
     </form>
