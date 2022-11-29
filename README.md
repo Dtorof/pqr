@@ -19,7 +19,7 @@ https://github.com/Dtorof/pqr.git
 https://extraordinary-pasca-255440.netlify.app/
 
 ## Tecnologias usadas
-`VUE/ PINIA/ BOOTSTRAP/ CSS / NODEJS / EXPRESS / MYSQL`
+`VUE/ PINIA / VUE-ROUTER / VUELIDATE / BOOTSTRAP/ CSS / NODEJS / EXPRESS / MYSQL`
 
 ## Back Log
 https://dtorof.atlassian.net/jira/software/projects/PQRS/boards/5
