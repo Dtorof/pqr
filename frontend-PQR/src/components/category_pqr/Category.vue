@@ -14,7 +14,7 @@ const getTypes_PQR = () => {
       fetch(urlData)
       .then(resp => resp.json())
       .then(data => types_PQR.value= data)
-      console.log(types_PQR)
+
 }
 
 onMounted(() => {

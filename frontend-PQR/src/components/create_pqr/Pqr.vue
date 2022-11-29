@@ -27,7 +27,6 @@ const getTypePQR = () => {
       fetch(urlData)
       .then(resp => resp.json())
       .then(data => types.value= data)
-      console.log("types",types)
 }
 
 
@@ -37,7 +36,6 @@ const getCustomer = async() => {
     const res = await fetch(urlBD)
     const data  = await res.json()
     customers.value = data
-    console.log("state.customers...",customers) 
   }catch(error){
     console.log(error)
   }
@@ -66,7 +64,6 @@ const filterCategories = computed(() => {
 
 const filterCustomers = computed(() => {
   if (form.value.client === '') {
-    console.log(form.value.client)
     return []
   }
 
@@ -155,7 +152,7 @@ const RegistrationCreatePQR = async () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data)
+      // console.log(data)
     })
 }
 const clear=() =>{
@@ -169,8 +166,6 @@ const clear=() =>{
 const update = (name, id) => {
   form.value.client = name;
   form.value.client_id = id;
-  console.log(form.value.client,  name, id)
-  console.log(form.value.client_id)
 }
 
 </script>
