@@ -1,6 +1,6 @@
 # PQR Management API
 
-App PQR Management consume la Api RandomUser desarrollada en VUE y NODE
+App PQR Management desarrollada en VUE y NODE
 
 ## Installation
 Clone el proyecto con el siguiente comando
